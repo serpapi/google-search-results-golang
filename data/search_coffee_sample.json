@@ -1,0 +1,316 @@
+{
+  "search_information": {
+    "total_results": 1670000000,
+    "time_taken": 0.77,
+    "query": "Coffee",
+    "location": "Portland, Oregon"
+  },
+  "serp_api_data": {
+    "id": {
+      "$oid": "5a5c7762defb2f7726dabf9c"
+    },
+    "total_time_taken": 70.556139227,
+    "google_url": "https://www.google.com/search?q=Coffee&oq=Coffee&uule=w+CAIQICIdUG9ydGxhbmQsT3JlZ29uLFVuaXRlZCBTdGF0ZXM&sourceid=chrome&ie=UTF-8"
+  },
+  "map": {
+    "link": "https://www.google.com/search?q=Coffee&npsic=0&rflfq=1&rldoc=1&rlha=0&rllag=45520495,-122678661,430&tbm=lcl&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8QtgMIKQ",
+    "image": true
+  },
+  "local_results": [
+    {
+      "position": 1,
+      "title": "Stumptown Coffee Roasters",
+      "rating": 4.4,
+      "reviews": 941,
+      "price": "$",
+      "type": "Cafe",
+      "address": "128 SW 3rd Ave",
+      "description": "Coffee bar serving direct-trade java",
+      "hours": "Opens at 6:00 AM",
+      "thumbnail": true
+    },
+    {
+      "position": 2,
+      "title": "Heart Coffee",
+      "rating": 4.5,
+      "reviews": 282,
+      "type": "Coffee Shop",
+      "address": "537 SW 12th Ave",
+      "description": "Stylish spot for coffee drinking",
+      "hours": "Opens at 7:00 AM",
+      "thumbnail": true
+    },
+    {
+      "position": 3,
+      "title": "Barista",
+      "rating": 4.5,
+      "reviews": 155,
+      "type": "Coffee Shop",
+      "address": "529 SW 3rd Ave #110",
+      "description": "Petite cafe serving multiple roasters",
+      "hours": "Opens at 6:00 AM",
+      "thumbnail": true
+    }
+  ],
+  "knowledge_graph": {
+    "title": "Coffee",
+    "type": "Drink",
+    "image": true,
+    "description": "Coffee is a brewed drink prepared from roasted coffee beans, which are the seeds of berries from the Coffea plant. The genus Coffea is native to tropical Africa and Madagascar, the Comoros, Mauritius, and Réunion in the Indian Ocean.",
+    "source": {
+      "name": "Wikipedia",
+      "link": "https://en.wikipedia.org/wiki/Coffee"
+    },
+    "related_searches": [
+      {
+        "name": "Tea",
+        "link": "https://www.google.com/search?q=Tea&stick=H4sIAAAAAAAAAONgFuLUz9U3MCorTMtV4gAxzZNzKrQE_UpLijJLMvPzgjNTUssTK4sByyY5qioAAAA&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8QxA0IkQIwGw",
+        "image": true
+      },
+      {
+        "name": "Espresso",
+        "link": "https://www.google.com/search?q=Espresso&stick=H4sIAAAAAAAAAONgFuLUz9U3MCorTMtV4gAxk0vSsrUE_UpLijJLMvPzgjNTUssTK4sBwYKq7CoAAAA&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8QxA0IkwIwGw",
+        "image": true
+      },
+      {
+        "name": "Chocolate",
+        "link": "https://www.google.com/search?q=Chocolate&stick=H4sIAAAAAAAAAONgFuLUz9U3MCorTMtV4gAzDcpytAT9SkuKMksy8_OCM1NSyxMriwHR8y5PKgAAAA&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8QxA0IlQIwGw",
+        "image": true
+      },
+      {
+        "name": "Cappuccino",
+        "link": "https://www.google.com/search?q=Cappuccino&stick=H4sIAAAAAAAAAONgFuLUz9U3MCorTMtV4gAxLc0NjLQE_UpLijJLMvPzgjNTUssTK4sB6b-xkioAAAA&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8QxA0IlwIwGw",
+        "image": true
+      },
+      {
+        "name": "Latte",
+        "link": "https://www.google.com/search?q=Latte&stick=H4sIAAAAAAAAAONgFuLUz9U3MCorTMtVAjMN84pMzbQE_UpLijJLMvPzgjNTUssTK4sBjSmgBisAAAA&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8QxA0ImQIwGw",
+        "image": true
+      }
+    ],
+    "more_related_searches_link": "https://www.google.com/search?q=Coffee&stick=H4sIAAAAAAAAAONgFuLUz9U3MCorTMtVQjC1xLKTrfTT8vNTwIRVcWZKanliZTEAKVBbezAAAAA&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8QzToIjgIoATAb"
+  },
+  "answer_box": {
+    "type": "unknow"
+  },
+  "organic_results": [
+    {
+      "position": 1,
+      "title": "Portland Roasting Coffee",
+      "link": "https://portlandroastingcoffee.com/",
+      "displayed_link": "https://portlandroastingcoffee.com/",
+      "snippet": "Costa Rica. Light | Single OriginBUY · Tour the roastery click here for information. Locate Portland Roasting Coffee. Locate. Portland Roasting Coffee, established 1996. Learn More. FOLLOW US ON INSTAGRAM @pdxroasting ...",
+      "related_link": "https://www.google.com/search?q=related:https://portlandroastingcoffee.com/+Coffee&tbo=1&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8QHwhtMAM"
+    },
+    {
+      "position": 2,
+      "title": "Sip Coffee at These 20 Portland Roasters and Cafes - Eater Portland",
+      "link": "https://pdx.eater.com/maps/20-great-portland-coffee-shops",
+      "displayed_link": "https://pdx.eater.com/maps/20-great-portland-coffee-shops",
+      "date": "Sep 20, 2017",
+      "snippet": "Sometimes, when you love something, you just keep talking about it. In this case, that would be coffee, coffee people, and coffeeshops. To get up close and personal with Portland coffee, Emily McIntyre, a former barista turned coffee writer and consultant, shares the 20 coffee shops she thinks serve the best ...",
+      "sitelinks": {
+        "inline": [
+          {
+            "title": "Sip Coffee at These 20 ...",
+            "link": "https://pdx.eater.com/maps/20-great-portland-coffee-shops/either-or"
+          },
+          {
+            "title": "Good Coffee",
+            "link": "https://pdx.eater.com/maps/20-great-portland-coffee-shops/good-coffee"
+          },
+          {
+            "title": "Coava Coffee Brew Bar",
+            "link": "https://pdx.eater.com/maps/20-great-portland-coffee-shops/coava-coffee-brew-bar"
+          },
+          {
+            "title": "Courier Coffee",
+            "link": "https://pdx.eater.com/maps/20-great-portland-coffee-shops/courier-coffee"
+          }
+        ]
+      },
+      "related_link": "https://www.google.com/search?q=related:https://pdx.eater.com/maps/20-great-portland-coffee-shops+Coffee&tbo=1&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8QHwhzMAQ"
+    },
+    {
+      "position": 3,
+      "title": "Coffee - Wikipedia",
+      "link": "https://en.wikipedia.org/wiki/Coffee",
+      "displayed_link": "https://en.wikipedia.org/wiki/Coffee",
+      "snippet": "Coffee is a brewed drink prepared from roasted coffee beans, which are the seeds of berries from the Coffea plant. The genus Coffea is native to tropical Africa and Madagascar, the Comoros, Mauritius, and Réunion in the Indian Ocean. The plant was exported from Africa to Arabia and to countries around the world. Coffee ...",
+      "sitelinks": {
+        "inline": [
+          {
+            "title": "History",
+            "link": "https://en.wikipedia.org/wiki/Coffee#History"
+          },
+          {
+            "title": "Cultivation",
+            "link": "https://en.wikipedia.org/wiki/Coffee#Cultivation"
+          },
+          {
+            "title": "Processing",
+            "link": "https://en.wikipedia.org/wiki/Coffee#Processing"
+          },
+          {
+            "title": "Health effects",
+            "link": "https://en.wikipedia.org/wiki/Coffee#Health_effects"
+          }
+        ]
+      },
+      "related_link": "https://www.google.com/search?q=related:https://en.wikipedia.org/wiki/Coffee+Coffee&tbo=1&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8QHwh_MAU"
+    },
+    {
+      "position": 4,
+      "title": "Public Domain Specialty Coffee Shop - Portland, OR",
+      "link": "http://www.publicdomaincoffee.com/",
+      "displayed_link": "www.publicdomaincoffee.com/",
+      "snippet": "Specialty coffee shop. Artisanal roast masters batch roast coffee weekly. Skilled baristas create customized coffee drinks.",
+      "cached_link": "http://webcache.googleusercontent.com/search?q=cache:6VLIhl7rVCsJ:www.publicdomaincoffee.com/+&cd=7&hl=en&ct=clnk&gl=us",
+      "related_link": "https://www.google.com/search?q=related:www.publicdomaincoffee.com/+Coffee&tbo=1&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8QHwiKATAG"
+    },
+    {
+      "position": 5,
+      "title": "Case Study Coffee - Portland",
+      "link": "https://www.casestudycoffee.com/",
+      "displayed_link": "https://www.casestudycoffee.com/",
+      "snippet": "Roasting direct trade and seasonal coffees in Portland, Oregon.",
+      "related_link": "https://www.google.com/search?q=related:https://www.casestudycoffee.com/+Coffee&tbo=1&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8QHwiQATAH"
+    },
+    {
+      "position": 6,
+      "title": "Heart Coffee Roasters - Portland",
+      "link": "https://www.heartroasters.com/",
+      "displayed_link": "https://www.heartroasters.com/",
+      "snippet": "Heart is a café, roaster & bustling destination point located in Portland, Oregon.",
+      "related_link": "https://www.google.com/search?q=related:https://www.heartroasters.com/+Coffee&tbo=1&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8QHwiWATAI"
+    },
+    {
+      "position": 7,
+      "title": "16 Places in Portland to Drink Coffee Right Now | Portland Monthly",
+      "link": "https://www.pdxmonthly.com/articles/2017/2/20/16-places-in-portland-to-drink-coffee-right-now",
+      "displayed_link": "https://www.pdxmonthly.com/.../2/.../16-places-in-portland-to-drink-coffee-right-now",
+      "date": "Feb 20, 2017",
+      "snippet": "Northeast's Roseway hood was a coffee wasteland until BFFs Marten Boyden and Austin Roberts opened this bright, spartan café in 2016. Now neighbors clamor for the chatty pair's exuberant yet balanced roasts—consumed via drip, via pour-over, or prepped on the café's Rocket R9 (plus, heady, ...",
+      "related_link": "https://www.google.com/search?q=related:https://www.pdxmonthly.com/articles/2017/2/20/16-places-in-portland-to-drink-coffee-right-now+Coffee&tbo=1&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8QHwicATAJ"
+    },
+    {
+      "position": 8,
+      "title": "Water Avenue Coffee - Portland",
+      "link": "https://wateravenuecoffee.com/",
+      "displayed_link": "https://wateravenuecoffee.com/",
+      "snippet": "Roaster and coffee bars located in Portland, Oregon.",
+      "related_link": "https://www.google.com/search?q=related:https://wateravenuecoffee.com/+Coffee&tbo=1&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8QHwijATAK"
+    },
+    {
+      "position": 9,
+      "title": "Downtown Portland's 10 best coffee shops | OregonLive.com - Portland",
+      "link": "http://www.oregonlive.com/dining/index.ssf/2017/09/downtown_portlands_10_best_cof.html",
+      "displayed_link": "www.oregonlive.com/dining/index.ssf/2017/.../downtown_portlands_10_best_cof.ht...",
+      "date": "Sep 27, 2017",
+      "snippet": "When you're looking for locally roasted beans, a treat yourself latte or somewhere relaxing to post up for a couple hours, these 10 downtown coffee shops are for you.",
+      "cached_link": "http://webcache.googleusercontent.com/search?q=cache:ec8ZBekWxroJ:www.oregonlive.com/dining/index.ssf/2017/09/downtown_portlands_10_best_cof.html+&cd=12&hl=en&ct=clnk&gl=us"
+    },
+    {
+      "position": 10,
+      "title": "Bulletproof Coffee: Debunking the Hot Buttered Hype - Gizmodo",
+      "link": "https://gizmodo.com/bulletproof-coffee-debunking-the-hot-buttered-hype-1681321467",
+      "displayed_link": "https://gizmodo.com/bulletproof-coffee-debunking-the-hot-buttered-hype-1681321467",
+      "snippet": "People are putting butter in their coffee. And hey, if you're just craving a new flavor experience, more power to you. The problem is that Bulletproof Coffee, the company behind the trend, is claiming that drinking a mug of fatty joe every morning instead of eating breakfast is a secret shortcut to weight loss and ..."
+    },
+    {
+      "position": 11,
+      "title": "The Case for Drinking as Much Coffee as You Like - The Atlantic",
+      "link": "https://www.theatlantic.com/health/archive/2012/11/the-case-for-drinking-as-much-coffee-as-you-like/265693/",
+      "displayed_link": "https://www.theatlantic.com/health/archive/2012/11/the-case-for...coffee.../265693/",
+      "snippet": "\"What I tell patients is, if you like coffee, go ahead and drink as much as you want and can,\" says Dr. Peter Martin, director of the Institute for Coffee Studies at Vanderbilt University. He's even developed a metric for monitoring your dosage: If you are having trouble sleeping, cut back on your last cup of the ..."
+    },
+    {
+      "position": 12,
+      "title": "More Consensus on Coffee's Effect on Health Than You Might Think ...",
+      "link": "https://www.nytimes.com/2015/05/12/upshot/more-consensus-on-coffees-benefits-than-you-might-think.html",
+      "displayed_link": "https://www.nytimes.com/.../more-consensus-on-coffees-benefits-than-you-might-think....",
+      "snippet": "A review of studies shows that coffee's reputation as being unhealthy is undeserved, with the potential health benefits surprisingly large."
+    }
+  ],
+  "related_place_searches": [
+    {
+      "query": "Best coffee",
+      "link": "https://www.google.com/search?tbm=lcl&q=Coffee&rflfq=1&num=20&uule=w+CAIQICIdUG9ydGxhbmQsT3JlZ29uLFVuaXRlZCBTdGF0ZXM&stick=H4sIAAAAAAAAACWQO04EMRBENQlCIpyNHHGE_lV_Uq6CZlMCOBjn4hSUdyXLQbtc_apeX9bphomQyKwsaZWwdU6lp0u1TQy0Bcnh-KRyzCPQlJJ1tmu1aoV1oulTvW5aEBHv5t0IBcbXGZGd7k3fscgyG0odEuoNKKg3uDunUJ_qSAe1afaccolPN0GMJrRNbIcJSjLVkxghQ9ibPja09xiMWUKNtEwZOxJFXmjP3rYuttMEqeAVWhJMi5wZ8GXUOErZu6SLYdUtIU0cVG2uqI0pznZqgAruKjd-ZKPMxU8Mbg8pC9uMAjHaz7BZQ8OAYJFpRRpjXcNqe5pMRRfmTvs9jr_j7eP6_nn__Lrfr-sfANw1CsEBAAA&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8Q_KoBCLUBMA8",
+      "snippet": "Spella Caffe, Courier Coffee, and 18 more"
+    },
+    {
+      "query": "Coffee and Wi-Fi",
+      "link": "https://www.google.com/search?tbm=lcl&q=Coffee&rflfq=1&num=20&uule=w+CAIQICIdUG9ydGxhbmQsT3JlZ29uLFVuaXRlZCBTdGF0ZXM&stick=H4sIAAAAAAAAAB2QS0pEMRRE6Yk4FJ-jjHoDwv3V_YwFt-BYsBt6oltzXa7CSkN4CeHm1Hn1-LAOH7MYTGjAAFHR9aIFEfFufhuhwPg62rVatcI60SFRvY4Zn9R04RJoSgnfu9g-xljAK7Qk1hGRne7tUrzPMhuORhAbMhCIDWwmNwAS6g0oaGFw9z1r7dPNTCOEWok9O2FpmepJt43KO7cYk-KUqwGYQVvkDEM0R41WKRuQoYKyUCYJYQXbWOP_1LSTwXp41vUcyb4o5VM9WZnsZUTSFOnsMTEavXupdFZSbcNrkil1mLhNs5eA2p6fYNC9i_Yeg_FNqNHUusScRQ83tUro7-n0d3p6-7leL5fz5_fX-eP2-n77B5_2sdPFAQAA&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8Q_KoBCLcBMBA",
+      "snippet": "Floyd's Coffee Shop Old Town, Public Domain, and 18 more"
+    },
+    {
+      "query": "Espresso bars",
+      "link": "https://www.google.com/search?tbm=lcl&q=Coffee&rflfq=1&num=20&uule=w+CAIQICIdUG9ydGxhbmQsT3JlZ29uLFVuaXRlZCBTdGF0ZXM&stick=H4sIAAAAAAAAABWQu01FMRBE9RJEQsIluhElzO7O_gqgEJCIQbzGqIsqmGtZtrSy53MeH84XC7gVmuvMaFqDmpJhTWwi4Zu-W5qmxfawInu93CNC004AMaNzkpa5cR67sWUV0EZeDjiP8FwSrOpqjIF-Hj4zOyh9bqsO40i0aMh22sCx9E6_wrq0eicKsbKyNqkqe8qvc5jg6NRTBKk2MYHhwiIUoM12EkZX3vXmNaTawrO8Sp5qUVcAlROZZCiy9LHqetiQqb8eoHnXQP6ChtqoUlpdsmq12hQX25yWSk0szmfhE9VQb4FdeI9ACSh2OrVaWIT1Si9szlZvl0emEv_ebn-3p7f798_n_f71-vH-c_8HG6XI1MEBAAA&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8Q_KoBCLkBMBE",
+      "snippet": "Water Avenue Coffee, Caffè Umbria, and 18 more"
+    },
+    {
+      "query": "College hangouts",
+      "link": "https://www.google.com/search?tbm=lcl&q=Coffee&rflfq=1&num=20&uule=w+CAIQICIdUG9ydGxhbmQsT3JlZ29uLFVuaXRlZCBTdGF0ZXM&stick=H4sIAAAAAAAAAB2RO04dQRRE9RLLIWKIJvISbtX9x6yEAOEAQYC9L6-LVbjmRd3quV3V58zPH-fBnGRmDFBsI-jnExzO3O5iOsmu7PNABmpn19tpUwE_j-3ycuvhxibGss5jHK3ADk7lhEXPeUTUlPtoeBnV5F5NacqZTOSMqc6v_vv38VkmFR-gXbMbLFbBS9Fhq64nWNpYpW00W6k291xaone8TNegPQQ7InS9abXgwsI1KuqyDr0qvQNtcR41iOHkYgiw5EP3XSJYCJMq7WOkxXcbKkeVGUqUOkyIlLUhIbsKV9Ojw8xa_SVLrLlUidAjklLq3pScizQAWQ6Dfo5QJJP_brfv28Pz5_v769vrr98vH2-ff_98_QcqlTeuwwEAAA&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8Q_KoBCLsBMBI",
+      "snippet": "Revolución Coffee House, Rimsky-Korsakoffee House, and 18 more"
+    },
+    {
+      "query": "Coffee shops",
+      "link": "https://www.google.com/search?tbm=lcl&q=Coffee&rflfq=1&num=20&uule=w+CAIQICIdUG9ydGxhbmQsT3JlZ29uLFVuaXRlZCBTdGF0ZXM&stick=H4sIAAAAAAAAACVQO25cQQzDNkEKd5vqVTmCRIn61DnLLtxtAF_M5_IpwomBwRQUKZH8-eO674TPDpLtNrFTuO5ZldjctI3mRE1c9w44xHHOtHvE4PrlTTOLGf3DdHJFzawpEcJ6kdXA6lJXlJA5m-ljLOn_jydmQWicDhMaBi_rlJrR6W153eW0x70TU5y07DlUWnoMeXwZGBFCM0WWfRoNS-yeY7GJQpVHacsZH1T7lHt2A7KnCEW5Ze1K6LVK3VYmMMBNHa7qajVhqbJiAQXa9CRIc3PJN7ZccfWMJ8uJRTnoyQqqlwK-vVa6sZGqBCaHzVOsnZLbA0UbWWT35-32dXv783o-H4_fH--vvx__AN8MsxXCAQAA&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8Q_KoBCL0BMBM",
+      "snippet": "Deadstock Coffee, Portland Roasting, and 18 more"
+    },
+    {
+      "query": "Quiet cafes",
+      "link": "https://www.google.com/search?tbm=lcl&q=Coffee&rflfq=1&num=20&uule=w+CAIQICIdUG9ydGxhbmQsT3JlZ29uLFVuaXRlZCBTdGF0ZXM&stick=H4sIAAAAAAAAAB2QTUolQRCEeRsZcGfPqlceIf8z4hgeQeQJrme8l-fyFEYLRRUEEVlf5J-H86mGEe2dXHB2Js9j3Yk2r0iAsZV2HggjyyxsPdwRwfOomQqWdOY2cqA4mRyfNB1rH1vFo9HRXXCfWAuPPP96ua91hlWUW3D4qzatQVG4BAxQUjMb0DWJ7cxhrcaOopEewysGoIVKJ6lvWYWELfx8Whthd06wxaveMk6Xyqc8zqwSxXn0VPpSLk6L1jjnkcawrHETlol1LiRFoUWYtkSqnXGlwhtWYF4lPTUO2umVYc6oqB7zvKxq3vpLi7Nkad661K21XN8QLWKiA1-32_ft8eXz4_7_-e31_f7vB9j0MRO8AQAA&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8Q_KoBCL8BMBQ",
+      "snippet": "Urban Grind Coffee, Museum Grounds Cafe, and 18 more"
+    }
+  ],
+  "related_searches": [
+    {
+      "query": "top 5 best coffee roasters in portland",
+      "link": "https://www.google.com/search?q=top+5+best+coffee+roasters+in+portland&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8Q1QIIwQEoAA"
+    },
+    {
+      "query": "oregon coffee companies",
+      "link": "https://www.google.com/search?q=oregon+coffee+companies&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8Q1QIIwgEoAQ"
+    },
+    {
+      "query": "portland roasting coffee",
+      "link": "https://www.google.com/search?q=portland+roasting+coffee&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8Q1QIIwwEoAg"
+    },
+    {
+      "query": "coava coffee roasters portland or",
+      "link": "https://www.google.com/search?q=coava+coffee+roasters+portland+or&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8Q1QIIxAEoAw"
+    },
+    {
+      "query": "stumptown coffee roasters portland or",
+      "link": "https://www.google.com/search?q=stumptown+coffee+roasters+portland+or&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8Q1QIIxQEoBA"
+    },
+    {
+      "query": "where to buy portland roasting coffee",
+      "link": "https://www.google.com/search?q=where+to+buy+portland+roasting+coffee&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8Q1QIIxgEoBQ"
+    },
+    {
+      "query": "portland roasting coffee menu",
+      "link": "https://www.google.com/search?q=portland+roasting+coffee+menu&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8Q1QIIxwEoBg"
+    },
+    {
+      "query": "portland roasting coffee k cups",
+      "link": "https://www.google.com/search?q=portland+roasting+coffee+k+cups&sa=X&ved=0ahUKEwjqmbOG19nYAhXhmeAKHWwnCW8Q1QIIyAEoBw"
+    }
+  ],
+  "pagination": {
+    "current": 1,
+    "next": "https://www.google.com/search?q=Coffee&ei=p3dcWqqqM-GzggfszqT4Bg&start=10&sa=N",
+    "other_pages": {
+      "2": "https://www.google.com/search?q=Coffee&ei=p3dcWqqqM-GzggfszqT4Bg&start=10&sa=N",
+      "3": "https://www.google.com/search?q=Coffee&ei=p3dcWqqqM-GzggfszqT4Bg&start=20&sa=N",
+      "4": "https://www.google.com/search?q=Coffee&ei=p3dcWqqqM-GzggfszqT4Bg&start=30&sa=N",
+      "5": "https://www.google.com/search?q=Coffee&ei=p3dcWqqqM-GzggfszqT4Bg&start=40&sa=N",
+      "6": "https://www.google.com/search?q=Coffee&ei=p3dcWqqqM-GzggfszqT4Bg&start=50&sa=N",
+      "7": "https://www.google.com/search?q=Coffee&ei=p3dcWqqqM-GzggfszqT4Bg&start=60&sa=N",
+      "8": "https://www.google.com/search?q=Coffee&ei=p3dcWqqqM-GzggfszqT4Bg&start=70&sa=N",
+      "9": "https://www.google.com/search?q=Coffee&ei=p3dcWqqqM-GzggfszqT4Bg&start=80&sa=N",
+      "10": "https://www.google.com/search?q=Coffee&ei=p3dcWqqqM-GzggfszqT4Bg&start=90&sa=N"
+    }
+  }
+}
