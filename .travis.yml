@@ -1,4 +1,4 @@
 language: go
 go:
-	- master
+  - master
 script: go test -v .
