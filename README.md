@@ -1,6 +1,8 @@
 Google search result GoLang API
 ===
 
+[![Build Status](https://travis-ci.org/serpapi/google-search-results-golang.svg?branch=master)](https://travis-ci.org/serpapi/google-search-results-golang)
+
 This Golang package enables to scrape and parse Google results using [SERP API](https://serpapi.com).
  Feel free to fork this repository to add more backends.
 
