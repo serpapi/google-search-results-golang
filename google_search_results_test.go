@@ -2,9 +2,9 @@ package google_search_results
 
 import (
 	"testing"
-	//"strings"
 	"os"
 	"strings"
+	"reflect"
 )
 
 // basic use case
@@ -20,7 +20,8 @@ func TestJSON(t *testing.T) {
 	if err != nil {
 		t.Error("unexpected error")
 	}
-	if len(serpResponse.LocalResults[0].Title) == 0 {
+	result := serpResponse["organic_results"].([]interface{})[0].(map[string]interface{})
+	if len(result["title"].(string)) == 0 {
 		t.Error("empty title in local results")
 	}
 }
@@ -39,7 +40,8 @@ func TestJSONwithGlobalKey(t *testing.T) {
 		t.Error("unexpected error")
 	}
 
-	if len(serpResponse.LocalResults[0].Title) == 0 {
+	result := serpResponse["organic_results"].([]interface{})[0].(map[string]interface{})
+	if len(result["title"].(string)) == 0 {
 		t.Error("empty title in local results")
 	}
 }
@@ -71,8 +73,32 @@ func TestDecodeJson(t *testing.T) {
 	if serpError != nil {
 		t.Error("error should be nil")
 	}
-	if len(serpResponse.LocalResults[0].Title) == 0 {
+
+	results := serpResponse["organic_results"].([]interface{})
+	ref := results[0].(map[string]interface{})
+	if ref["title"] != "Portland Roasting Coffee"{
 		t.Error("empty title in local results")
+	}
+}
+
+func TestDecodeJsonPage20(t *testing.T) {
+	t.Log("run test")
+	reader, err := os.Open("./data/search_coffee_sample_page20.json")
+	if err != nil {
+		panic(err)
+	}
+	var sq SerpQuery
+	serpResponse, serpError := sq.decodeJson(reader)
+	if serpError != nil {
+		t.Error("error should be nil")
+		t.Error(serpError)
+	}
+	t.Log(reflect.ValueOf(serpResponse).MapKeys())
+	results := serpResponse["organic_results"].([]interface{})
+	ref := results[0].(map[string]interface{})
+	t.Log(ref["title"].(string))
+	if ref["title"].(string) != "Coffee | HuffPost" {
+		t.Error("fail decoding the title ")
 	}
 }
 

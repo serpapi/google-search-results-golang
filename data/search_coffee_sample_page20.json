@@ -1,0 +1,235 @@
+{
+  "search_information": {
+    "total_results": 3534000000,
+    "time_taken": 0.69,
+    "query": "Coffee",
+    "location": "Portland, Oregon"
+  },
+  "serp_api_data": {
+    "internal_id": "5a788f85defb2f69513898dd",
+    "total_time_taken": 74.313295218,
+    "google_url": "https://www.google.com/search?q=Coffee&oq=Coffee&uule=w+CAIQICIdUG9ydGxhbmQsT3JlZ29uLFVuaXRlZCBTdGF0ZXM&start=20&sourceid=chrome&ie=UTF-8"
+  },
+  "ads": [
+    {
+      "position": 1,
+      "block_position": "bottom",
+      "title": "Gourmet Coffee | We Roast & Ship Daily‎",
+      "link": "https://www.coffeeam.com/gourmet-coffee.html",
+      "displayed_link": "www.coffeeam.com/Fresh/Coffee",
+      "rating": 4.7,
+      "reviews": 1228,
+      "description": "Enjoy Fresh Roasted Coffee. Delivered Direct to You!",
+      "extensions": [
+        "$50+, Coffee Ships Free",
+        "Specialty",
+        "Grade Coffee",
+        "Freshest Coffee Online",
+        "Roasted Fresh Daily"
+      ],
+      "sitelinks": [
+        {
+          "title": "Fair Trade Coffee",
+          "link": "https://www.coffeeam.com/gourmet-coffee/regular/certified-fair-trade-coffee.html/"
+        },
+        {
+          "title": "Best Single-Origin Coffee",
+          "link": "https://www.coffeeam.com/what-trending/top-rated-single-origin-coffee.html"
+        },
+        {
+          "title": "Organic Coffee",
+          "link": "https://www.coffeeam.com/gourmet-coffee/regular/organic-coffee.html"
+        },
+        {
+          "title": "Gourmet Coffee Club",
+          "link": "https://www.coffeeam.com/coffee-tea-gifts-1/coffee-club.html/"
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "block_position": "bottom",
+      "title": "Coffee Beans Online | Coffee Bean Direct®‎",
+      "link": "https://www.coffeebeandirect.com/",
+      "displayed_link": "www.coffeebeandirect.com/",
+      "description": "Fresh Roasted Specialty Coffee. Free Shipping Available On Orders $50+",
+      "extensions": [
+        "Organic Certified",
+        "> 100 Variaties of Coffee",
+        "Fair Trade Certified",
+        "Free Shipping Over $50"
+      ],
+      "sitelinks": [
+        {
+          "title": "Light Roast Coffee",
+          "link": "http://www.coffeebeandirect.com/coffee/roast-level/light.html"
+        },
+        {
+          "title": "Blended Coffee",
+          "link": "https://www.coffeebeandirect.com/roasted-coffee/signature-blends.html"
+        },
+        {
+          "title": "Dark Roast Coffee",
+          "link": "https://www.coffeebeandirect.com/coffee/roast-level/dark.html"
+        },
+        {
+          "title": "Organic + Fair Trade",
+          "link": "http://www.coffeebeandirect.com/coffee/type/organic-fair-trade.html"
+        },
+        {
+          "title": "Coffee Accessories",
+          "link": "http://www.coffeebeandirect.com/coffee/accessories.html"
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "block_position": "bottom",
+      "title": "Angry Sloth Coffee | Veteran Owned and Operated‎",
+      "link": "https://angryslothcoffee.com/",
+      "displayed_link": "www.angryslothcoffee.com/",
+      "description": "Treat yourself to the coffee for the working class, operated by Paratroopers.",
+      "sitelinks": [
+        {
+          "title": "Address",
+          "link": "https://angryslothcoffee.com/pages/shipping"
+        },
+        {
+          "title": "Contact Us",
+          "link": "https://angryslothcoffee.com/pages/contact-us"
+        }
+      ]
+    }
+  ],
+  "organic_results": [
+    {
+      "position": 1,
+      "title": "Coffee | HuffPost",
+      "link": "https://www.huffingtonpost.com/topic/coffee",
+      "displayed_link": "https://www.huffingtonpost.com/topic/coffee",
+      "snippet": "There's no better way to ring in the New Year than with a festive brunch enjoyed with friends and family. From hair of the. BUSINESS. Long Island Iced Tea Corp's Shares Skyrocket After Renaming Itself 'Long Blockchain Corp' · The surge in the company's stock price lifted its market capitalization to $92 million from $23.8 ..."
+    },
+    {
+      "position": 2,
+      "title": "Single Origin, Blends, Espresso Coffee Beans | Shop | Blue Bottle Coffee",
+      "link": "https://bluebottlecoffee.com/store/coffee",
+      "displayed_link": "https://bluebottlecoffee.com/store/coffee",
+      "snippet": "Shop for single origin coffee, espresso coffee, decaf coffee, coffee blends in the Blue Bottle Store.",
+      "related_link": "https://www.google.com/search?q=related:https://bluebottlecoffee.com/store/coffee+Coffee&tbo=1&sa=X&ved=0ahUKEwjUj6mCoo_ZAhWqgFQKHSPtA4k4FBAfCC8wAQ"
+    },
+    {
+      "position": 3,
+      "title": "Heart Coffee Roasters - Portland",
+      "link": "https://www.heartroasters.com/",
+      "displayed_link": "https://www.heartroasters.com/",
+      "snippet": "Heart is a café, roaster & bustling destination point located in Portland, Oregon.",
+      "related_link": "https://www.google.com/search?q=related:https://www.heartroasters.com/+Coffee&tbo=1&sa=X&ved=0ahUKEwjUj6mCoo_ZAhWqgFQKHSPtA4k4FBAfCDUwAg"
+    },
+    {
+      "position": 4,
+      "title": "Death Wish Coffee Company: World's Strongest Coffee | Best Coffee",
+      "link": "https://www.deathwishcoffee.com/",
+      "displayed_link": "https://www.deathwishcoffee.com/",
+      "snippet": "Death Wish Coffee Company is the top online coffee-seller of fair-trade, organic, high-caffeine blends, and we have the world's strongest coffee!",
+      "related_link": "https://www.google.com/search?q=related:https://www.deathwishcoffee.com/+Coffee&tbo=1&sa=X&ved=0ahUKEwjUj6mCoo_ZAhWqgFQKHSPtA4k4FBAfCDswAw"
+    },
+    {
+      "position": 5,
+      "title": "#coffee hashtag on Twitter",
+      "link": "https://twitter.com/hashtag/coffee?lang=en",
+      "displayed_link": "https://twitter.com/hashtag/coffee?lang=en",
+      "snippet": "24h ago @RealSaltLife tweeted: \"#Coffee & Vitamin #sea are good for ..\" - read what others are saying and join the conversation.",
+      "related_link": "https://www.google.com/search?q=related:https://twitter.com/hashtag/coffee%3Flang%3Den+Coffee&tbo=1&sa=X&ved=0ahUKEwjUj6mCoo_ZAhWqgFQKHSPtA4k4FBAfCEEwBA"
+    },
+    {
+      "position": 6,
+      "title": "Coffee may come with a cancer warning in California - CNN",
+      "link": "https://www.cnn.com/2018/01/31/health/cancer-coffee-warning/index.html",
+      "displayed_link": "https://www.cnn.com/2018/01/31/health/cancer-coffee-warning/index.html",
+      "date": "4 days ago",
+      "snippet": "California coffee shops may soon be forced to warn customers about a possible cancer risk linked to their morning jolt of java."
+    },
+    {
+      "position": 7,
+      "title": "Barrington Coffee Roasting Company",
+      "link": "https://barringtoncoffee.com/",
+      "displayed_link": "https://barringtoncoffee.com/",
+      "snippet": "Barrington Coffee Roasting Company roasts the finest hand-selected coffees in the world. Premium, extremely fresh, gourmet coffees shipped direct to you.",
+      "related_link": "https://www.google.com/search?q=related:https://barringtoncoffee.com/+Coffee&tbo=1&sa=X&ved=0ahUKEwjUj6mCoo_ZAhWqgFQKHSPtA4k4FBAfCE0wBg"
+    },
+    {
+      "position": 8,
+      "title": "Public Domain Specialty Coffee Shop - Portland, OR",
+      "link": "http://www.publicdomaincoffee.com/",
+      "displayed_link": "www.publicdomaincoffee.com/",
+      "snippet": "Specialty coffee shop. Artisanal roast masters batch roast coffee weekly. Skilled baristas create customized coffee drinks.",
+      "cached_link": "http://webcache.googleusercontent.com/search?q=cache:6VLIhl7rVCsJ:www.publicdomaincoffee.com/+&cd=28&hl=en&ct=clnk&gl=us",
+      "related_link": "https://www.google.com/search?q=related:www.publicdomaincoffee.com/+Coffee&tbo=1&sa=X&ved=0ahUKEwjUj6mCoo_ZAhWqgFQKHSPtA4k4FBAfCFMwBw"
+    },
+    {
+      "position": 9,
+      "title": "Home | The Coffee Bean & Tea Leaf",
+      "link": "https://www.coffeebean.com/",
+      "displayed_link": "https://www.coffeebean.com/",
+      "snippet": "Download The Coffee Bean® Rewards app now for exclusive goodies, plus a free brewed coffee or hot tea to welcome you into the fold. Find us in the App Store Find us in the Play Store. Shop Coffee. Shop Now. Shop Tea. Shop Now. CBTL® Capsules. Perfectly sized for the perfect cup. Each single serve CBTL® capsule ...",
+      "related_link": "https://www.google.com/search?q=related:https://www.coffeebean.com/+Coffee&tbo=1&sa=X&ved=0ahUKEwjUj6mCoo_ZAhWqgFQKHSPtA4k4FBAfCFkwCA"
+    },
+    {
+      "position": 10,
+      "title": "Delicious Coffees for Home & Wholesale - Olympia Coffee Roasting ...",
+      "link": "https://www.olympiacoffee.com/",
+      "displayed_link": "https://www.olympiacoffee.com/",
+      "snippet": "Olympia Coffee Roasting is a small, quality focused coffee roaster from the Pacific Northwest. We source, roast,and brew delicious coffees.",
+      "related_link": "https://www.google.com/search?q=related:https://www.olympiacoffee.com/+Coffee&tbo=1&sa=X&ved=0ahUKEwjUj6mCoo_ZAhWqgFQKHSPtA4k4FBAfCF8wCQ"
+    }
+  ],
+  "related_searches": [
+    {
+      "query": "top 5 best coffee roasters in portland",
+      "link": "https://www.google.com/search?q=top+5+best+coffee+roasters+in+portland&sa=X&ved=0ahUKEwjUj6mCoo_ZAhWqgFQKHSPtA4k4FBDVAgiGASgA"
+    },
+    {
+      "query": "coffee history",
+      "link": "https://www.google.com/search?q=coffee+history&sa=X&ved=0ahUKEwjUj6mCoo_ZAhWqgFQKHSPtA4k4FBDVAgiHASgB"
+    },
+    {
+      "query": "coava coffee roasters portland, or",
+      "link": "https://www.google.com/search?q=coava+coffee+roasters+portland,+or&sa=X&ved=0ahUKEwjUj6mCoo_ZAhWqgFQKHSPtA4k4FBDVAgiIASgC"
+    },
+    {
+      "query": "coffee meaning",
+      "link": "https://www.google.com/search?q=coffee+meaning&sa=X&ved=0ahUKEwjUj6mCoo_ZAhWqgFQKHSPtA4k4FBDVAgiJASgD"
+    },
+    {
+      "query": "coffee effects",
+      "link": "https://www.google.com/search?q=coffee+effects&sa=X&ved=0ahUKEwjUj6mCoo_ZAhWqgFQKHSPtA4k4FBDVAgiKASgE"
+    },
+    {
+      "query": "coffee health",
+      "link": "https://www.google.com/search?q=coffee+health&sa=X&ved=0ahUKEwjUj6mCoo_ZAhWqgFQKHSPtA4k4FBDVAgiLASgF"
+    },
+    {
+      "query": "coffee plant",
+      "link": "https://www.google.com/search?q=coffee+plant&sa=X&ved=0ahUKEwjUj6mCoo_ZAhWqgFQKHSPtA4k4FBDVAgiMASgG"
+    },
+    {
+      "query": "coffee love",
+      "link": "https://www.google.com/search?q=coffee+love&sa=X&ved=0ahUKEwjUj6mCoo_ZAhWqgFQKHSPtA4k4FBDVAgiNASgH"
+    }
+  ],
+  "pagination": {
+    "current": 3,
+    "next": "https://www.google.com/search?q=Coffee&ei=zo94WtTwBKqB0gKj2o_ICA&start=30&sa=N",
+    "other_pages": {
+      "1": "https://www.google.com/search?q=Coffee&ei=zo94WtTwBKqB0gKj2o_ICA&start=0&sa=N",
+      "2": "https://www.google.com/search?q=Coffee&ei=zo94WtTwBKqB0gKj2o_ICA&start=10&sa=N",
+      "4": "https://www.google.com/search?q=Coffee&ei=zo94WtTwBKqB0gKj2o_ICA&start=30&sa=N",
+      "5": "https://www.google.com/search?q=Coffee&ei=zo94WtTwBKqB0gKj2o_ICA&start=40&sa=N",
+      "6": "https://www.google.com/search?q=Coffee&ei=zo94WtTwBKqB0gKj2o_ICA&start=50&sa=N",
+      "7": "https://www.google.com/search?q=Coffee&ei=zo94WtTwBKqB0gKj2o_ICA&start=60&sa=N",
+      "8": "https://www.google.com/search?q=Coffee&ei=zo94WtTwBKqB0gKj2o_ICA&start=70&sa=N",
+      "9": "https://www.google.com/search?q=Coffee&ei=zo94WtTwBKqB0gKj2o_ICA&start=80&sa=N",
+      "10": "https://www.google.com/search?q=Coffee&ei=zo94WtTwBKqB0gKj2o_ICA&start=90&sa=N"
+    }
+  }
+}

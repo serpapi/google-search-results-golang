@@ -20,7 +20,9 @@ parameter := map[string]string{
 
 query := newGoogleSearch(parameter)
 serpResponse, err = query.json()
-fmt.Println(serpResponse.LocalResults[0].Title)
+results := serpResponse["organic_results"].([]interface{})
+first_result := results[0].(map[string]interface{})
+fmt.Println(ref["title"].(string))
 ```
 
 ## Set parameter
