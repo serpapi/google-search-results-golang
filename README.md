@@ -12,21 +12,21 @@ There is no dependency for this project.
 An implementation example is provided here.
 @see google_seach_results_test.go
 ## Simple Example
-```java
+```go
 parameter := map[string]string{
     "q":            "Coffee",
     "location":     "Portland"
 }
 
 query := newGoogleSearch(parameter)
-serpResponse, err = query.json()
+serpResponse, err := query.json()
 results := serpResponse["organic_results"].([]interface{})
 first_result := results[0].(map[string]interface{})
 fmt.Println(ref["title"].(string))
 ```
 
 ## Set parameter
-```java
+```go
 Map<String, String> parameter = new HashMap<>();
 parameter.put("q", "Coffee");
 parameter.put("location", "Portland");
@@ -34,20 +34,20 @@ parameter.put("location", "Portland");
 
 ## Set SERP API key
 
-```java
+```go
 GoogleSearchResults.serp_api_key_default = "Your Private Key"
 query = GoogleSearchResults(parameter)
 ```
 Or
 
-```java
+```go
 query = GoogleSearchResults(parameter, "Your Private Key")
 ```
 
 ## Example with all params and all outputs
 
-```java
-query_parameter = {
+```go
+query_parameter := {
   "q": "query",
   "google_domain": "Google Domain",
   "location": "Location Requested",
@@ -65,15 +65,5 @@ data, err := query.html()
 data, err := query.json()
 data, err := query.jsonWithImages()
 ```
-
-Limitation
----
- - No wrapper method around parametrization.
-  the parameters are passed by a simple Map<String,String>
-
-Source
----
- * http://www.baeldung.com/java-http-request
- * https://github.com/google/gson
 
 @author Victor Benarbia
