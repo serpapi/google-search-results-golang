@@ -7,6 +7,32 @@ import (
 	"reflect"
 )
 
+func TestRealWorldExample(t *testing.T) {
+	parameter := map[string]string{
+		"q": "Coffee",
+		"location": "Portland, Oregon, United States",
+		"hl": "en",
+		"gl": "us",
+		"google_domain": "google.com",
+		"api_key": "demo",
+		"safe": "active",
+		"start": "10",
+		"num": "10",
+		"device": "desktop",
+	}
+
+	query := newGoogleSearch(parameter)
+	serpResponse, err := query.json()
+
+	if err != nil {
+		t.Error("unexpected error")
+	}
+	result := serpResponse["organic_results"].([]interface{})[0].(map[string]interface{})
+	if len(result["title"].(string)) == 0 {
+		t.Error("empty title in local results")
+	}
+}
+
 // basic use case
 func TestJSON(t *testing.T) {
 	parameter := map[string]string{
