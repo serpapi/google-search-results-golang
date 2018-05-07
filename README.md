@@ -1,4 +1,4 @@
-Google search result GoLang API
+Google Search Results GoLang API
 ===
 
 [![Build Status](https://travis-ci.org/serpapi/google-search-results-golang.svg?branch=master)](https://travis-ci.org/serpapi/google-search-results-golang)
