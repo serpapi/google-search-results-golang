@@ -1,24 +1,24 @@
 package google_search_results
 
 import (
-	"testing"
 	"os"
-	"strings"
 	"reflect"
+	"strings"
+	"testing"
 )
 
 func TestRealWorldExample(t *testing.T) {
 	parameter := map[string]string{
-		"q": "Coffee",
-		"location": "Portland, Oregon, United States",
-		"hl": "en",
-		"gl": "us",
+		"q":             "Coffee",
+		"location":      "Portland, Oregon, United States",
+		"hl":            "en",
+		"gl":            "us",
 		"google_domain": "google.com",
-		"api_key": "demo",
-		"safe": "active",
-		"start": "10",
-		"num": "10",
-		"device": "desktop",
+		"api_key":       "demo",
+		"safe":          "active",
+		"start":         "10",
+		"num":           "10",
+		"device":        "desktop",
 	}
 
 	query := newGoogleSearch(parameter)
@@ -54,10 +54,10 @@ func TestJSON(t *testing.T) {
 
 func TestJSONwithGlobalKey(t *testing.T) {
 	parameter := map[string]string{
-		"q":            "Coffee",
-		"location":     "Portland"}
+		"q":        "Coffee",
+		"location": "Portland"}
 
-	setApiKey("demo")
+	setAPIKey("demo")
 
 	query := newGoogleSearch(parameter)
 
@@ -74,13 +74,13 @@ func TestJSONwithGlobalKey(t *testing.T) {
 
 func TestGetHTML(t *testing.T) {
 	parameter := map[string]string{
-		"q":            "Coffee",
-		"location":     "Portland"}
+		"q":        "Coffee",
+		"location": "Portland"}
 
-	setApiKey("demo")
+	setAPIKey("demo")
 
 	query := newGoogleSearch(parameter)
-	data, err  := query.html()
+	data, err := query.html()
 	if err != nil {
 		t.Error("err must be nil")
 	}
@@ -95,14 +95,14 @@ func TestDecodeJson(t *testing.T) {
 		panic(err)
 	}
 	var sq SerpQuery
-	serpResponse, serpError := sq.decodeJson(reader)
+	serpResponse, serpError := sq.decodeJSON(reader)
 	if serpError != nil {
 		t.Error("error should be nil")
 	}
 
 	results := serpResponse["organic_results"].([]interface{})
 	ref := results[0].(map[string]interface{})
-	if ref["title"] != "Portland Roasting Coffee"{
+	if ref["title"] != "Portland Roasting Coffee" {
 		t.Error("empty title in local results")
 	}
 }
@@ -114,7 +114,7 @@ func TestDecodeJsonPage20(t *testing.T) {
 		panic(err)
 	}
 	var sq SerpQuery
-	serpResponse, serpError := sq.decodeJson(reader)
+	serpResponse, serpError := sq.decodeJSON(reader)
 	if serpError != nil {
 		t.Error("error should be nil")
 		t.Error(serpError)
@@ -134,7 +134,7 @@ func TestDecodeJsonError(t *testing.T) {
 		panic(err)
 	}
 	var sq SerpQuery
-	serpResponse, serpError := sq.decodeJson(reader)
+	serpResponse, serpError := sq.decodeJSON(reader)
 	if serpResponse != nil {
 		t.Error("response should be nil")
 	}

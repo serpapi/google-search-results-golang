@@ -11,6 +11,7 @@ There is no dependency for this project.
 
 An implementation example is provided here.
 @see google_seach_results_test.go
+
 ## Simple Example
 ```go
 parameter := map[string]string{
@@ -63,7 +64,6 @@ query_parameter := {
 query := newGoogleSearch(query_parameter)
 data, err := query.html()
 data, err := query.json()
-data, err := query.jsonWithImages()
 ```
 
 @author Victor Benarbia

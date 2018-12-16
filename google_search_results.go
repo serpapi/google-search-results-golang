@@ -1,5 +1,8 @@
-// This package enales to interact with SerpAPI server
 package google_search_results
+
+/*
+ * This package enables to interact with SerpApi server
+ */
 
 import (
 	"encoding/json"
@@ -8,34 +11,31 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"time"
 )
 
+// Hold SerpApi user key
 var serpApiKey string
 
-/*
- * Constant and model declaration
- */
-const BACKEND = "serpapi.com"
-const SERP_API_KEY = "serp_api_key"
-
-// Serp API query
+// SerpQuery holds query parameter
 type SerpQuery struct {
 	parameter map[string]string
 }
 
+// SerpResponse holds response
 type SerpResponse map[string]interface{}
 
 // Create a new query
 func newGoogleSearch(parameter map[string]string) SerpQuery {
 	if len(serpApiKey) > 0 {
-		parameter[SERP_API_KEY] = serpApiKey
+		parameter["serp_api_key"] = serpApiKey
 	}
 
 	return SerpQuery{parameter: parameter}
 }
 
 // Set Serp API key
-func setApiKey(key string) {
+func setAPIKey(key string) {
 	serpApiKey = key
 }
 
@@ -47,8 +47,11 @@ func (sq *SerpQuery) execute(output string) *http.Response {
 	}
 	query.Add("source", "go")
 	query.Add("output", output)
-	endpoint := "https://" + BACKEND + "/search?" + query.Encode()
-	rsp, err := http.Get(endpoint)
+	endpoint := "https://serpapi.com/search?" + query.Encode()
+	var client = &http.Client{
+		Timeout: time.Second * 60,
+	}
+	rsp, err := client.Get(endpoint)
 
 	if err != nil {
 		panic(err.Error())
@@ -59,16 +62,11 @@ func (sq *SerpQuery) execute(output string) *http.Response {
 // return go struct by processing the json returned by the server
 func (sq *SerpQuery) json() (SerpResponse, error) {
 	rsp := sq.execute("json")
-	return sq.decodeJson(rsp.Body)
+	return sq.decodeJSON(rsp.Body)
 }
 
-func (sq *SerpQuery) jsonWithImages() (SerpResponse, error) {
-	rsp := sq.execute("json_with_images")
-	return sq.decodeJson(rsp.Body)
-}
-
-// decode json response
-func (sq *SerpQuery) decodeJson(body io.ReadCloser) (SerpResponse, error) {
+// decodeJson response
+func (sq *SerpQuery) decodeJSON(body io.ReadCloser) (SerpResponse, error) {
 	// Decode JSON from response body
 	decoder := json.NewDecoder(body)
 	//var serpResponse SerpResponse
@@ -79,25 +77,24 @@ func (sq *SerpQuery) decodeJson(body io.ReadCloser) (SerpResponse, error) {
 	}
 
 	// check error message
-	errorMessage, derror  := serpResponse["error"].(string)
+	errorMessage, derror := serpResponse["error"].(string)
 	if derror {
 		return nil, errors.New(errorMessage)
 	}
 	return serpResponse, nil
 }
 
-// return html as string
+// return html as a string
 func (sq *SerpQuery) html() (*string, error) {
 	rsp := sq.execute("html")
-	return sq.decodeHtml(rsp.Body)
+	return sq.decodeHTML(rsp.Body)
 }
 
-// decode html
-func (sq *SerpQuery) decodeHtml(body io.ReadCloser) (*string, error) {
+// decodeHTML
+func (sq *SerpQuery) decodeHTML(body io.ReadCloser) (*string, error) {
 	buffer, err := ioutil.ReadAll(body)
 	if err != nil {
 		panic(err)
-		return nil, err
 	}
 	text := string(buffer)
 	return &text, nil
