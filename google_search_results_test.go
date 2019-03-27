@@ -189,6 +189,7 @@ func TestGetLocation(t *testing.T) {
 func TestGetAccount(t *testing.T) {
 	// Skip this test
 	if len(os.Getenv("API_KEY")) == 0 {
+		t.Skip("API_KEY required")
 		return
 	}
 
@@ -210,6 +211,11 @@ func TestGetAccount(t *testing.T) {
 
 // Search archive API
 func TestSearchArchive(t *testing.T) {
+	if len(os.Getenv("API_KEY")) == 0 {
+		t.Skip("API_KEY required")
+		return
+	}
+
 	setup()
 	parameter := map[string]string{
 		"serp_api_key": "demo",
