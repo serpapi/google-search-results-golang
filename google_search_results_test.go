@@ -16,7 +16,16 @@ func setup() {
 	}
 }
 
+func shoulSkip() bool {
+	return len(os.Getenv("API_KEY")) == 0
+}
+
 func TestRealWorldExample(t *testing.T) {
+	if shoulSkip() {
+		t.Skip("API_KEY required")
+		return
+	}
+
 	setup()
 
 	parameter := map[string]string{
@@ -25,7 +34,7 @@ func TestRealWorldExample(t *testing.T) {
 		"hl":            "en",
 		"gl":            "us",
 		"google_domain": "google.com",
-		"api_key":       "demo",
+		"api_key":       os.Getenv("API_KEY"),
 		"safe":          "active",
 		"start":         "10",
 		"num":           "10",
@@ -48,11 +57,16 @@ func TestRealWorldExample(t *testing.T) {
 
 // basic use case
 func TestJSON(t *testing.T) {
+	if shoulSkip() {
+		t.Skip("API_KEY required")
+		return
+	}
+
 	setup()
 	parameter := map[string]string{
-		"serp_api_key": "demo",
-		"q":            "Coffee",
-		"location":     "Portland"}
+		"api_key":  os.Getenv("API_KEY"),
+		"q":        "Coffee",
+		"location": "Portland"}
 
 	client := newGoogleSearch(parameter)
 	rsp, err := client.GetJSON()
@@ -69,6 +83,11 @@ func TestJSON(t *testing.T) {
 }
 
 func TestJSONwithGlobalKey(t *testing.T) {
+	if shoulSkip() {
+		t.Skip("API_KEY required")
+		return
+	}
+
 	setup()
 	parameter := map[string]string{
 		"q":        "Coffee",
@@ -88,6 +107,11 @@ func TestJSONwithGlobalKey(t *testing.T) {
 }
 
 func TestGetHTML(t *testing.T) {
+	if shoulSkip() {
+		t.Skip("API_KEY required")
+		return
+	}
+
 	parameter := map[string]string{
 		"q":        "Coffee",
 		"location": "Portland"}
@@ -218,9 +242,9 @@ func TestSearchArchive(t *testing.T) {
 
 	setup()
 	parameter := map[string]string{
-		"serp_api_key": "demo",
-		"q":            "Coffee",
-		"location":     "Portland"}
+		"api_key":  os.Getenv("API_KEY"),
+		"q":        "Coffee",
+		"location": "Portland"}
 
 	client := newGoogleSearch(parameter)
 	rsp, err := client.GetJSON()
