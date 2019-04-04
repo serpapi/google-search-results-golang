@@ -29,7 +29,7 @@ type SerpResponse map[string]interface{}
 type SerpResponseArray []interface{}
 
 // Create a new query
-func newGoogleSearch(parameter map[string]string) SerpQuery {
+func NewGoogleSearch(parameter map[string]string) SerpQuery {
 	if len(apiKey) > 0 {
 		parameter["api_key"] = apiKey
 	}
@@ -55,7 +55,7 @@ func (sq *SerpQuery) GetHTML() (*string, error) {
 
 // GetLocation returns closest location
 func GetLocation(q string, limit int) (SerpResponseArray, error) {
-	client := newGoogleSearch(map[string]string{
+	client := NewGoogleSearch(map[string]string{
 		"q":     q,
 		"limit": string(limit),
 	})
@@ -65,7 +65,7 @@ func GetLocation(q string, limit int) (SerpResponseArray, error) {
 
 // GetAccount return account information
 func GetAccount() (SerpResponse, error) {
-	client := newGoogleSearch(map[string]string{})
+	client := NewGoogleSearch(map[string]string{})
 	rsp := client.execute("/account", "json")
 	return client.decodeJSON(rsp.Body)
 }

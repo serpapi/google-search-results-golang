@@ -41,7 +41,7 @@ func TestRealWorldExample(t *testing.T) {
 		"device":        "desktop",
 	}
 
-	client := newGoogleSearch(parameter)
+	client := NewGoogleSearch(parameter)
 	rsp, err := client.GetJSON()
 
 	if err != nil {
@@ -68,7 +68,7 @@ func TestJSON(t *testing.T) {
 		"q":        "Coffee",
 		"location": "Portland"}
 
-	client := newGoogleSearch(parameter)
+	client := NewGoogleSearch(parameter)
 	rsp, err := client.GetJSON()
 
 	if err != nil {
@@ -93,7 +93,7 @@ func TestJSONwithGlobalKey(t *testing.T) {
 		"q":        "Coffee",
 		"location": "Portland"}
 
-	client := newGoogleSearch(parameter)
+	client := NewGoogleSearch(parameter)
 	rsp, err := client.GetJSON()
 	if err != nil {
 		t.Error("unexpected error", err)
@@ -118,7 +118,7 @@ func TestGetHTML(t *testing.T) {
 
 	setup()
 
-	client := newGoogleSearch(parameter)
+	client := NewGoogleSearch(parameter)
 	data, err := client.GetHTML()
 	if err != nil {
 		t.Error("err must be nil")
@@ -246,7 +246,7 @@ func TestSearchArchive(t *testing.T) {
 		"q":        "Coffee",
 		"location": "Portland"}
 
-	client := newGoogleSearch(parameter)
+	client := NewGoogleSearch(parameter)
 	rsp, err := client.GetJSON()
 
 	if err != nil {
