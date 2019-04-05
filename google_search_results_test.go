@@ -20,7 +20,7 @@ func shoulSkip() bool {
 	return len(os.Getenv("API_KEY")) == 0
 }
 
-func TestRealWorldExample(t *testing.T) {
+func TestQuickStart(t *testing.T) {
 	if shoulSkip() {
 		t.Skip("API_KEY required")
 		return

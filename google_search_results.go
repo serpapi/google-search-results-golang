@@ -28,7 +28,7 @@ type SerpResponse map[string]interface{}
 // SerpResponseArray hold response array
 type SerpResponseArray []interface{}
 
-// Create a new query
+// NewGoogleSearch initialize the query
 func NewGoogleSearch(parameter map[string]string) SerpQuery {
 	if len(apiKey) > 0 {
 		parameter["api_key"] = apiKey
@@ -36,7 +36,7 @@ func NewGoogleSearch(parameter map[string]string) SerpQuery {
 	return SerpQuery{parameter: parameter}
 }
 
-// Set Serp API KEY
+// Set your API KEY
 func setAPIKey(key string) {
 	apiKey = key
 }
