@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	g "github.com/serpapi/google-search-results-golang"
+	"os"
 )
 
 /***
@@ -13,12 +14,16 @@ import (
 func main() {
 	parameter := map[string]string{
 		"q":        "Coffee",
-		"location": "Portland",
-		"api_key":  "2a09c3d5c663314640a0c4382bc2d6be73c233417011040f689318801bf9d328",
+		"location": "Austin,Texas",
+		"api_key":  os.Getenv("API_KEY"), // your api key
 	}
 
 	client := g.NewGoogleSearch(parameter)
 	serpResponse, err := client.GetJSON()
+	if err != nil {
+		fmt.Println("error: ", err)
+		return
+	}
 	results := serpResponse["organic_results"].([]interface{})
 	firstResult := results[0].(map[string]interface{})
 	fmt.Println(firstResult["title"].(string))
