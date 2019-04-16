@@ -51,10 +51,10 @@ parameter := map[string]string{
 }
 
 query := newGoogleSearch(parameter)
-serpResponse, err := query.json()
-results := serpResponse["organic_results"].([]interface{})
-first_result := results[0].(map[string]interface{})
-fmt.Println(ref["title"].(string))
+results, err := query.GetJSON()
+organicResult := results["organic_results"].([]interface{})
+first_result := organicResult[0].(map[string]interface{})
+fmt.Println(first_result["title"].(string))
 ```
 
 This example runs a search about "coffee" using your secret api key.
