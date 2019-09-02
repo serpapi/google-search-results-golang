@@ -32,6 +32,25 @@ type SerpResponseArray []interface{}
 func NewGoogleSearch(parameter map[string]string) SerpQuery {
 	if len(apiKey) > 0 {
 		parameter["api_key"] = apiKey
+		parameter["engine"] = "google"
+	}
+	return SerpQuery{parameter: parameter}
+}
+
+// NewBingSearch initialize the query
+func NewBingSearch(parameter map[string]string) SerpQuery {
+	if len(apiKey) > 0 {
+		parameter["api_key"] = apiKey
+		parameter["engine"] = "bing"
+	}
+	return SerpQuery{parameter: parameter}
+}
+
+// NewBaiduSearch initialize the query
+func NewBaiduSearch(parameter map[string]string) SerpQuery {
+	if len(apiKey) > 0 {
+		parameter["api_key"] = apiKey
+		parameter["engine"] = "baidu"
 	}
 	return SerpQuery{parameter: parameter}
 }

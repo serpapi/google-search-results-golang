@@ -3,7 +3,7 @@ Google Search Results GoLang API
 
 [![Build Status](https://travis-ci.org/serpapi/google-search-results-golang.svg?branch=master)](https://travis-ci.org/serpapi/google-search-results-golang)
 
-This Golang package enables to scrape and parse Google results using [SERP API](https://serpapi.com).
+This Golang package enables to scrape and parse Google, Bing and Baidu results using [SERP API](https://serpapi.com).
  Feel free to fork this repository to add more backends.
 
 This project is an implementation of Serp API in Golang 1.12
@@ -50,7 +50,7 @@ parameter := map[string]string{
     "location":     "Portland"
 }
 
-query := newGoogleSearch(parameter)
+query := NewGoogleSearch(parameter)
 serpResponse, err := query.json()
 results := serpResponse["organic_results"].([]interface{})
 first_result := results[0].(map[string]interface{})
@@ -63,11 +63,16 @@ The Serp API service (backend)
  - searches on Google using the client: q = "coffee"
  - parses the messy HTML responses
  - return a standardizes JSON response
-The Ruby class GoogleSearchResults
  - Format the request to Serp API server
  - Execute GET http request
  - Parse JSON into Ruby Hash using JSON standard library provided by Ruby
 Et voila..
+
+Alternatively, you can search:
+ - Bing using NewBingSearch method
+ - Baidu using NewBaiduSearch method
+
+See the [playground to generate your code.](https://serpapi.com/playground)
 
 ## Example
  * [How to set SERP API key](#how-to-set-serp-api-key)
@@ -205,7 +210,8 @@ data contains the account information.
 
 ## Change log
 
- * Export NewGoogleSearch outside of the package.
+ * 1.3 Add support for Bing and Baidu
+ * 1.2 Export NewGoogleSearch outside of the package.
 
 ## Conclusion
 Serp API supports Google Images, News, Shopping and more..

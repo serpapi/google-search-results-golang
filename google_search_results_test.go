@@ -20,7 +20,7 @@ func shoulSkip() bool {
 	return len(os.Getenv("API_KEY")) == 0
 }
 
-func TestQuickStart(t *testing.T) {
+func TestGoogleQuickStart(t *testing.T) {
 	if shoulSkip() {
 		t.Skip("API_KEY required")
 		return
@@ -56,7 +56,7 @@ func TestQuickStart(t *testing.T) {
 }
 
 // basic use case
-func TestJSON(t *testing.T) {
+func TestGoogleJSON(t *testing.T) {
 	if shoulSkip() {
 		t.Skip("API_KEY required")
 		return
@@ -75,14 +75,65 @@ func TestJSON(t *testing.T) {
 		t.Error("unexpected error", err)
 		return
 	}
-	result := rsp["organic_results"].([]interface{})[0].(map[string]interface{})
-	if len(result["title"].(string)) == 0 {
-		t.Error("empty title in local results")
+	if len(rsp["organic_results"].([]interface{})) < 5 {
+		t.Error("less than 5 organic result")
 		return
 	}
 }
 
-func TestJSONwithGlobalKey(t *testing.T) {
+
+func TestBaiduJSON(t *testing.T) {
+	if shoulSkip() {
+		t.Skip("API_KEY required")
+		return
+	}
+
+	setup()
+	parameter := map[string]string{
+		"api_key":  os.Getenv("API_KEY"),
+		"q":        "Coffee",
+		"location": "Portland"}
+
+	client := NewBaiduSearch(parameter)
+	rsp, err := client.GetJSON()
+
+	if err != nil {
+		t.Error("unexpected error", err)
+		return
+	}
+	if len(rsp["organic_results"].([]interface{})) < 5 {
+		t.Error("less than 5 organic result")
+		return
+	}
+}
+
+
+func TestBingJSON(t *testing.T) {
+	if shoulSkip() {
+		t.Skip("API_KEY required")
+		return
+	}
+
+	setup()
+	parameter := map[string]string{
+		"api_key":  os.Getenv("API_KEY"),
+		"q":        "Coffee",
+		"location": "Portland"}
+
+	client := NewBingSearch(parameter)
+	rsp, err := client.GetJSON()
+
+	if err != nil {
+		t.Error("unexpected error", err)
+		return
+	}
+	if len(rsp["organic_results"].([]interface{})) < 5 {
+		t.Error("less than 5 organic result")
+		return
+	}
+}
+
+func TestGoogleJSONwithGlobalKey(t *testing.T) {
 	if shoulSkip() {
 		t.Skip("API_KEY required")
 		return
@@ -106,7 +157,7 @@ func TestJSONwithGlobalKey(t *testing.T) {
 	}
 }
 
-func TestGetHTML(t *testing.T) {
+func TestGoogleGetHTML(t *testing.T) {
 	if shoulSkip() {
 		t.Skip("API_KEY required")
 		return
@@ -129,7 +180,7 @@ func TestGetHTML(t *testing.T) {
 	}
 }
 
-func TestDecodeJson(t *testing.T) {
+func TestGoogleDecodeJson(t *testing.T) {
 	reader, err := os.Open("./data/search_coffee_sample.json")
 	if err != nil {
 		panic(err)
@@ -149,7 +200,7 @@ func TestDecodeJson(t *testing.T) {
 	}
 }
 
-func TestDecodeJsonPage20(t *testing.T) {
+func TestGoogleDecodeJsonPage20(t *testing.T) {
 	t.Log("run test")
 	reader, err := os.Open("./data/search_coffee_sample_page20.json")
 	if err != nil {
@@ -170,7 +221,7 @@ func TestDecodeJsonPage20(t *testing.T) {
 	}
 }
 
-func TestDecodeJsonError(t *testing.T) {
+func TestGoogleDecodeJsonError(t *testing.T) {
 	reader, err := os.Open("./data/error_sample.json")
 	if err != nil {
 		panic(err)
@@ -190,7 +241,7 @@ func TestDecodeJsonError(t *testing.T) {
 	}
 }
 
-func TestGetLocation(t *testing.T) {
+func TestGoogleGetLocation(t *testing.T) {
 	setup()
 
 	var rsp SerpResponseArray
@@ -210,7 +261,7 @@ func TestGetLocation(t *testing.T) {
 	}
 }
 
-func TestGetAccount(t *testing.T) {
+func TestGoogleGetAccount(t *testing.T) {
 	// Skip this test
 	if len(os.Getenv("API_KEY")) == 0 {
 		t.Skip("API_KEY required")
@@ -234,7 +285,7 @@ func TestGetAccount(t *testing.T) {
 }
 
 // Search archive API
-func TestSearchArchive(t *testing.T) {
+func TestGoogleSearchArchive(t *testing.T) {
 	if len(os.Getenv("API_KEY")) == 0 {
 		t.Skip("API_KEY required")
 		return
