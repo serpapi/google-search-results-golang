@@ -63,9 +63,9 @@ The Serp API service (backend)
  - searches on Google using the client: q = "coffee"
  - parses the messy HTML responses
  - return a standardizes JSON response
- - Format the request to Serp API server
- - Execute GET http request
- - Parse JSON into Ruby Hash using JSON standard library provided by Ruby
+ - Format the request
+ - Execute GET http request against Serp API service
+ - Parse JSON response into a deep hash
 Et voila..
 
 Alternatively, you can search:
