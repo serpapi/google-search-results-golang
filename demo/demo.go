@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	g "github.com/serpapi/google-search-results-golang"
+	serpapi "github.com/serpapi/google-search-results-golang"
 	"os"
 )
 
@@ -15,10 +15,9 @@ func main() {
 	parameter := map[string]string{
 		"q":        "Coffee",
 		"location": "Austin,Texas",
-		"api_key":  os.Getenv("API_KEY"), // your api key
 	}
 
-	client := g.NewGoogleSearch(parameter)
+	client := serpapi.NewGoogleClient(parameter, os.Getenv("API_KEY"))
 	serpResponse, err := client.GetJSON()
 	if err != nil {
 		fmt.Println("error: ", err)

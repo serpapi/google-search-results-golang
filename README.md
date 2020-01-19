@@ -126,6 +126,8 @@ data, err := client.GetJSON()
 
 (the full documentation)[https://serpapi.com/search-api]
 
+Full example: [https://github.com/serpapi/google-search-results-golang/blob/master/demo/demo.go]
+
 see below for more hands on examples.
 
 ### Example by specification
