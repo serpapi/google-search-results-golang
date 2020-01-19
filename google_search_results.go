@@ -14,110 +14,138 @@ import (
 	"time"
 )
 
-// Hold SerpApi user key
-var apiKey string
-
-// SerpQuery hold query parameter
-type SerpQuery struct {
-	parameter map[string]string
+// SerpApiClient hold query parameter
+type SerpApiClient struct {
+	Engine    string
+	Parameter map[string]string
+	ApiKey    string
 }
 
-// SerpResponse hold response
-type SerpResponse map[string]interface{}
+// SerpApiResponse hold response
+type SerpApiResponse map[string]interface{}
 
-// SerpResponseArray hold response array
-type SerpResponseArray []interface{}
+// SerpApiResponseArray hold response array
+type SerpApiResponseArray []interface{}
 
-// NewGoogleSearch initialize the query
-func NewGoogleSearch(parameter map[string]string) SerpQuery {
-	if len(apiKey) > 0 {
-		parameter["api_key"] = apiKey
-		parameter["engine"] = "google"
-	}
-	return SerpQuery{parameter: parameter}
+// NewSerpApiClient create generic SerpApi client
+func NewSerpApiClient(engine string, parameter map[string]string, apiKey string) SerpApiClient {
+	return SerpApiClient{Engine: engine, Parameter: parameter, ApiKey: apiKey}
 }
 
-// NewBingSearch initialize the query
-func NewBingSearch(parameter map[string]string) SerpQuery {
-	if len(apiKey) > 0 {
-		parameter["api_key"] = apiKey
-		parameter["engine"] = "bing"
-	}
-	return SerpQuery{parameter: parameter}
+// NewGoogleSearch create client for google
+func NewGoogleClient(parameter map[string]string, apiKey string) SerpApiClient {
+	return NewSerpApiClient("google", parameter, apiKey)
 }
 
-// NewBaiduSearch initialize the query
-func NewBaiduSearch(parameter map[string]string) SerpQuery {
-	if len(apiKey) > 0 {
-		parameter["api_key"] = apiKey
-		parameter["engine"] = "baidu"
-	}
-	return SerpQuery{parameter: parameter}
+// NewBingSearch create client for bing
+func NewBingClient(parameter map[string]string, apiKey string) SerpApiClient {
+	return NewSerpApiClient("bing", parameter, apiKey)
+}
+
+// NewBaiduSearch create client for baidu
+func NewBaiduClient(parameter map[string]string, apiKey string) SerpApiClient {
+	return NewSerpApiClient("baidu", parameter, apiKey)
+}
+
+// NewBaiduSearch create client for yahoo
+func NewYahooClient(parameter map[string]string, apiKey string) SerpApiClient {
+	return NewSerpApiClient("yahoo", parameter, apiKey)
+}
+
+// NewGoogleMapsClient create client for google_maps
+func NewGoogleMapsClient(parameter map[string]string, apiKey string) SerpApiClient {
+	return NewSerpApiClient("google_maps", parameter, apiKey)
+}
+
+// NewGoogleProductClient create client for google_product
+func NewGoogleProductClient(parameter map[string]string, apiKey string) SerpApiClient {
+	return NewSerpApiClient("google_product", parameter, apiKey)
+}
+
+// NewGoogleScholarClient create client for google_product
+func NewGoogleScholarClient(parameter map[string]string, apiKey string) SerpApiClient {
+	return NewSerpApiClient("google_scholar", parameter, apiKey)
 }
 
 // Set your API KEY
-func setAPIKey(key string) {
-	apiKey = key
+func (client *SerpApiClient) SetApiKey(key string) {
+	client.ApiKey = key
 }
 
-// GetJSON returns SerpResponse containing
-func (sq *SerpQuery) GetJSON() (SerpResponse, error) {
-	rsp := sq.execute("/search", "json")
-	return sq.decodeJSON(rsp.Body)
+// GetJSON returns SerpApiResponse containing
+func (client *SerpApiClient) GetJSON() (SerpApiResponse, error) {
+	rsp, err := client.execute("/search", "json")
+	if err != nil {
+		return nil, err
+	}
+	return client.decodeJSON(rsp.Body)
 }
 
 // GetHTML returns html as a string
-func (sq *SerpQuery) GetHTML() (*string, error) {
-	rsp := sq.execute("/search", "html")
-	return sq.decodeHTML(rsp.Body)
+func (client *SerpApiClient) GetHTML() (*string, error) {
+	rsp, err := client.execute("/search", "html")
+	if err != nil {
+		return nil, err
+	}
+	return client.decodeHTML(rsp.Body)
 }
 
 // GetLocation returns closest location
-func GetLocation(q string, limit int) (SerpResponseArray, error) {
-	client := NewGoogleSearch(map[string]string{
+func (client *SerpApiClient) GetLocation(q string, limit int) (SerpApiResponseArray, error) {
+	client.Parameter = map[string]string{
 		"q":     q,
 		"limit": string(limit),
-	})
-	rsp := client.execute("/locations.json", "json")
+	}
+	rsp, err := client.execute("/locations.json", "json")
+	if err != nil {
+		return nil, err
+	}
 	return client.decodeJSONArray(rsp.Body)
 }
 
 // GetAccount return account information
-func GetAccount() (SerpResponse, error) {
-	client := NewGoogleSearch(map[string]string{})
-	rsp := client.execute("/account", "json")
+func (client *SerpApiClient) GetAccount() (SerpApiResponse, error) {
+	client.Parameter = map[string]string{}
+	rsp, err := client.execute("/account", "json")
+	if err != nil {
+		return nil, err
+	}
 	return client.decodeJSON(rsp.Body)
 }
 
 // GetSearchArchive retrieve search from the archive using the Search Archive API
-func (sq *SerpQuery) GetSearchArchive(searchID string) (SerpResponse, error) {
-	rsp := sq.execute("/searches/"+searchID+".json", "json")
-	return sq.decodeJSON(rsp.Body)
+func (client *SerpApiClient) GetSearchArchive(searchID string) (SerpApiResponse, error) {
+	rsp, err := client.execute("/searches/"+searchID+".json", "json")
+	if err != nil {
+		return nil, err
+	}
+	return client.decodeJSON(rsp.Body)
 }
 
 // decodeJson response
-func (sq *SerpQuery) decodeJSON(body io.ReadCloser) (SerpResponse, error) {
+func (client *SerpApiClient) decodeJSON(body io.ReadCloser) (SerpApiResponse, error) {
 	// Decode JSON from response body
 	decoder := json.NewDecoder(body)
-	//var serpResponse SerpResponse
-	var serpResponse SerpResponse
-	err := decoder.Decode(&serpResponse)
+
+	// Response data
+	var serpApiResponse SerpApiResponse
+	err := decoder.Decode(&serpApiResponse)
 	if err != nil {
 		return nil, errors.New("fail to decode")
 	}
 
 	// check error message
-	errorMessage, derror := serpResponse["error"].(string)
+	errorMessage, derror := serpApiResponse["error"].(string)
 	if derror {
 		return nil, errors.New(errorMessage)
 	}
-	return serpResponse, nil
+	return serpApiResponse, nil
 }
 
 // decodeJSONArray primitive function
-func (sq *SerpQuery) decodeJSONArray(body io.ReadCloser) (SerpResponseArray, error) {
+func (client *SerpApiClient) decodeJSONArray(body io.ReadCloser) (SerpApiResponseArray, error) {
 	decoder := json.NewDecoder(body)
-	var rsp SerpResponseArray
+	var rsp SerpApiResponseArray
 	err := decoder.Decode(&rsp)
 	if err != nil {
 		return nil, errors.New("fail to decode array")
@@ -126,31 +154,35 @@ func (sq *SerpQuery) decodeJSONArray(body io.ReadCloser) (SerpResponseArray, err
 }
 
 // decodeHTML primitive function
-func (sq *SerpQuery) decodeHTML(body io.ReadCloser) (*string, error) {
+func (client *SerpApiClient) decodeHTML(body io.ReadCloser) (*string, error) {
 	buffer, err := ioutil.ReadAll(body)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 	text := string(buffer)
 	return &text, nil
 }
 
 // Execute the HTTP get
-func (sq *SerpQuery) execute(path string, output string) *http.Response {
+func (client *SerpApiClient) execute(path string, output string) (*http.Response, error) {
 	query := url.Values{}
-	for k, v := range sq.parameter {
-		query.Add(k, v)
+	if client.Parameter != nil {
+		for k, v := range client.Parameter {
+			query.Add(k, v)
+		}
+	}
+	if len(client.ApiKey) != 0 {
+		query.Add("api_key", client.ApiKey)
 	}
 	query.Add("source", "go")
 	query.Add("output", output)
 	endpoint := "https://serpapi.com" + path + "?" + query.Encode()
-	var client = &http.Client{
+	var httpClient = &http.Client{
 		Timeout: time.Second * 60,
 	}
-	rsp, err := client.Get(endpoint)
-
+	rsp, err := httpClient.Get(endpoint)
 	if err != nil {
-		panic(err.Error())
+		return nil, err
 	}
-	return rsp
+	return rsp, nil
 }

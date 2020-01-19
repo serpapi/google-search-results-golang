@@ -1,23 +1,28 @@
 package google_search_results
 
 import (
+	"log"
 	"os"
 	"reflect"
 	"strings"
 	"testing"
 )
 
-func setup() {
-	v := os.Getenv("API_KEY")
-	if len(v) == 0 {
-		setAPIKey("demo")
-	} else {
-		setAPIKey(v)
+var apiKey string
+
+func TestMain(m *testing.M) {
+	apiKey = os.Getenv("API_KEY")
+	if len(apiKey) == 0 {
+		apiKey = "demo"
 	}
+	log.Println("API_KEY: " + apiKey)
+
+	// call flag.Parse() here if TestMain uses flags
+	os.Exit(m.Run())
 }
 
 func shoulSkip() bool {
-	return len(os.Getenv("API_KEY")) == 0
+	return len(apiKey) == 0
 }
 
 func TestGoogleQuickStart(t *testing.T) {
@@ -26,22 +31,19 @@ func TestGoogleQuickStart(t *testing.T) {
 		return
 	}
 
-	setup()
-
 	parameter := map[string]string{
 		"q":             "Coffee",
 		"location":      "Portland, Oregon, United States",
 		"hl":            "en",
 		"gl":            "us",
 		"google_domain": "google.com",
-		"api_key":       os.Getenv("API_KEY"),
 		"safe":          "active",
 		"start":         "10",
 		"num":           "10",
 		"device":        "desktop",
 	}
 
-	client := NewGoogleSearch(parameter)
+	client := NewGoogleClient(parameter, apiKey)
 	rsp, err := client.GetJSON()
 
 	if err != nil {
@@ -62,13 +64,11 @@ func TestGoogleJSON(t *testing.T) {
 		return
 	}
 
-	setup()
 	parameter := map[string]string{
-		"api_key":  os.Getenv("API_KEY"),
 		"q":        "Coffee",
 		"location": "Portland"}
 
-	client := NewGoogleSearch(parameter)
+	client := NewGoogleClient(parameter, apiKey)
 	rsp, err := client.GetJSON()
 
 	if err != nil {
@@ -80,7 +80,6 @@ func TestGoogleJSON(t *testing.T) {
 		return
 	}
 }
-
 
 func TestBaiduJSON(t *testing.T) {
 	if shoulSkip() {
@@ -88,13 +87,11 @@ func TestBaiduJSON(t *testing.T) {
 		return
 	}
 
-	setup()
 	parameter := map[string]string{
-		"api_key":  os.Getenv("API_KEY"),
 		"q":        "Coffee",
 		"location": "Portland"}
 
-	client := NewBaiduSearch(parameter)
+	client := NewBaiduClient(parameter, apiKey)
 	rsp, err := client.GetJSON()
 
 	if err != nil {
@@ -107,20 +104,17 @@ func TestBaiduJSON(t *testing.T) {
 	}
 }
 
-
 func TestBingJSON(t *testing.T) {
 	if shoulSkip() {
 		t.Skip("API_KEY required")
 		return
 	}
 
-	setup()
 	parameter := map[string]string{
-		"api_key":  os.Getenv("API_KEY"),
 		"q":        "Coffee",
 		"location": "Portland"}
 
-	client := NewBingSearch(parameter)
+	client := NewBingClient(parameter, apiKey)
 	rsp, err := client.GetJSON()
 
 	if err != nil {
@@ -139,12 +133,11 @@ func TestGoogleJSONwithGlobalKey(t *testing.T) {
 		return
 	}
 
-	setup()
 	parameter := map[string]string{
 		"q":        "Coffee",
 		"location": "Portland"}
 
-	client := NewGoogleSearch(parameter)
+	client := NewGoogleClient(parameter, apiKey)
 	rsp, err := client.GetJSON()
 	if err != nil {
 		t.Error("unexpected error", err)
@@ -167,9 +160,7 @@ func TestGoogleGetHTML(t *testing.T) {
 		"q":        "Coffee",
 		"location": "Portland"}
 
-	setup()
-
-	client := NewGoogleSearch(parameter)
+	client := NewGoogleClient(parameter, apiKey)
 	data, err := client.GetHTML()
 	if err != nil {
 		t.Error("err must be nil")
@@ -185,8 +176,8 @@ func TestGoogleDecodeJson(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	var sq SerpQuery
-	rsp, err := sq.decodeJSON(reader)
+	var client SerpApiClient
+	rsp, err := client.decodeJSON(reader)
 	if err != nil {
 		t.Error("error should be nil", err)
 		return
@@ -206,8 +197,8 @@ func TestGoogleDecodeJsonPage20(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	var sq SerpQuery
-	rsp, err := sq.decodeJSON(reader)
+	var client SerpApiClient
+	rsp, err := client.decodeJSON(reader)
 	if err != nil {
 		t.Error("error should be nil")
 		t.Error(err)
@@ -226,8 +217,8 @@ func TestGoogleDecodeJsonError(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	var sq SerpQuery
-	rsp, err := sq.decodeJSON(reader)
+	var client SerpApiClient
+	rsp, err := client.decodeJSON(reader)
 	if rsp != nil {
 		t.Error("response should not be nil")
 		return
@@ -242,11 +233,11 @@ func TestGoogleDecodeJsonError(t *testing.T) {
 }
 
 func TestGoogleGetLocation(t *testing.T) {
-	setup()
 
-	var rsp SerpResponseArray
+	var rsp SerpApiResponseArray
 	var err error
-	rsp, err = GetLocation("Austin", 3)
+	client := NewSerpApiClient("google", map[string]string{}, apiKey)
+	rsp, err = client.GetLocation("Austin", 3)
 
 	if err != nil {
 		t.Error(err)
@@ -263,19 +254,20 @@ func TestGoogleGetLocation(t *testing.T) {
 
 func TestGoogleGetAccount(t *testing.T) {
 	// Skip this test
-	if len(os.Getenv("API_KEY")) == 0 {
+	if len(apiKey) == 0 {
 		t.Skip("API_KEY required")
 		return
 	}
 
-	setup()
-
-	var rsp SerpResponse
+	var rsp SerpApiResponse
 	var err error
-	rsp, err = GetAccount()
+	client := NewSerpApiClient("google", map[string]string{}, apiKey)
+	rsp, err = client.GetAccount()
 
 	if err != nil {
+		t.Error("fail to fetch data")
 		t.Error(err)
+		return
 	}
 
 	if rsp["account_id"] == nil {
@@ -286,18 +278,16 @@ func TestGoogleGetAccount(t *testing.T) {
 
 // Search archive API
 func TestGoogleSearchArchive(t *testing.T) {
-	if len(os.Getenv("API_KEY")) == 0 {
+	if len(apiKey) == 0 {
 		t.Skip("API_KEY required")
 		return
 	}
 
-	setup()
 	parameter := map[string]string{
-		"api_key":  os.Getenv("API_KEY"),
 		"q":        "Coffee",
 		"location": "Portland"}
 
-	client := NewGoogleSearch(parameter)
+	client := NewGoogleClient(parameter, apiKey)
 	rsp, err := client.GetJSON()
 
 	if err != nil {

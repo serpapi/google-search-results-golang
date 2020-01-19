@@ -50,9 +50,11 @@ parameter := map[string]string{
     "location":     "Portland"
 }
 
-query := NewGoogleSearch(parameter)
-serpResponse, err := query.json()
-results := serpResponse["organic_results"].([]interface{})
+query := NewGoogleClient(parameter, api)
+// Many clients available: bing, yahoo, baidu, googemaps, googleproduct, googlescholar
+
+rsp, err := query.json()
+results := rsp["organic_results"].([]interface{})
 first_result := results[0].(map[string]interface{})
 fmt.Println(ref["title"].(string))
 ```
@@ -83,21 +85,16 @@ See the [playground to generate your code.](https://serpapi.com/playground)
  * [Account API](#account-api)
 
 ### How to set SERP API key
-The Serp API key can be set globally using a singleton pattern.
-
-```go
-GoogleSearchResults.serp_api_key_default = "Your Private Key"
-client = GoogleSearchResults(parameter)
-```
-
 The Serp API key can be provided for each client.
+
 ```go
-client = GoogleSearchResults(parameter, "Your Private Key")
+client := GoogleSearchResults(parameter, "Your Private Key")
 ```
 
 ### Search API capability
 ```go
 parameter = {
+  "engine": "yahoo",
   "q": "query",
   "google_domain": "Google Domain",
   "location": "Location Requested",
@@ -114,16 +111,16 @@ parameter = {
   "output": "json|html" # output format
 }
 
-# define the search client
-client := newGoogleSearch(parameter)
+// define the search client
+client := NewSerpApiClient("yahoo", parameter, apiKey)
 
-# override an existing parameter
+// override an existing parameter
 client.parameter["location"] = "Portland,Oregon,United States"
 
-# search format return as raw html
+// search format return as raw html
 data, err := client.GetHTML()
 
-# search format returns a json
+// search format returns a json
 data, err := client.GetJSON()
 ```
 
@@ -134,7 +131,7 @@ see below for more hands on examples.
 ### Example by specification
 
 We love true open source, continuous integration and Test Drive Development (TDD). 
- We are using RSpec to test [our infrastructure around the clock](https://travis-ci.org/serpapi/google-search-results-ruby) to achieve the best QoS (Quality Of Service).
+ We are using "go test" [our infrastructure around the clock](https://travis-ci.org/serpapi/google-search-results-golang) to achieve the best QoS (Quality Of Service).
  
 The directory test/ includes specification/examples.
 
@@ -152,7 +149,7 @@ make test
 ```go
 var locationList SerpResponseArray
 var err error
-locationList, err = GetLocation("Austin", 3)
+locationList, err = client.GetLocation("Austin", 3)
 
 if err != nil {
   log.Println(err)
@@ -166,12 +163,11 @@ rsp contains the first 3 location matching Austin (Texas, Texas, Rochester)
 Run a search then get search result from the archive using the search archive API.
 ```go
 parameter := map[string]string{
-  "api_key":  "your user key",
   "q":        "Coffee",
   "location": "Portland"
   }
 
-client := NewGoogleSearch(parameter)
+client := NewGoogleClient(parameter, "your user key")
 rsp, err := client.GetJSON()
 
 if err != nil {
@@ -198,7 +194,7 @@ it prints the search ID from the archive.
 ```go
 var data SerpResponse
 var err error
-data, err = GetAccount()
+data, err = client.GetAccount()
 
 if err != nil {
   log.Println(err)
@@ -210,11 +206,16 @@ data contains the account information.
 
 ## Change log
 
+ * 2.0 Rewrite fully the implementation
+        to be more scalable in order to support multiple engines.
  * 1.3 Add support for Bing and Baidu
  * 1.2 Export NewGoogleSearch outside of the package.
 
 ## Conclusion
-Serp API supports Google Images, News, Shopping and more..
+
+Serp Api supports mutiple search engines and subservices all available for this Golang client.
+
+For example: Using Google client.
 To enable a type of search, the field tbm (to be matched) must be set to:
 
  * isch: Google Images API.
