@@ -3,10 +3,8 @@ Google Search Results GoLang API
 
 [![Build Status](https://travis-ci.org/serpapi/google-search-results-golang.svg?branch=master)](https://travis-ci.org/serpapi/google-search-results-golang)
 
-This Golang package enables to scrape and parse Google, Bing and Baidu results using [SERP API](https://serpapi.com).
- Feel free to fork this repository to add more backends.
-
-This project is an implementation of Serp API in Golang 1.12
+This Golang package enables to scrape and parse Google, Bing and Baidu results using [SerpApi](https://serpapi.com).
+This project is an implementation of SerpApi in Golang 1.12
 There is no dependency for this project.
 
 This Go module is meant to scrape and parse Google results using [SerpApi](https://serpapi.com).
@@ -16,7 +14,7 @@ The following services are provided:
  * [Search Archive API](https://serpapi.com/search-archive-api)
  * [Account API](https://serpapi.com/account-api)
 
-Serp API provides a [script builder](https://serpapi.com/demo) to get you started quickly.
+SerpApi provides a [script builder](https://serpapi.com/demo) to get you started quickly.
 
 An implementation example is provided here.
 > demo/demo.go
@@ -26,7 +24,9 @@ You take a look to our test.
 
 [The full documentation is available here.](https://serpapi.com/search-api)
 
-Feel free to fork this repository to add more backends.
+
+
+free to fork this repository to add more backends.
 
 ## Installation
 
@@ -215,7 +215,7 @@ data contains the account information.
 
 ## Conclusion
 
-Serp Api supports mutiple search engines and subservices all available for this Golang client.
+SerpApi supports mutiple search engines and subservices all available for this Golang client.
 
 For example: Using Google client.
 To enable a type of search, the field tbm (to be matched) must be set to:
