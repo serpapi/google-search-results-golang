@@ -3,8 +3,12 @@ Google Search Results GoLang API
 
 [![Build Status](https://travis-ci.org/serpapi/google-search-results-golang.svg?branch=master)](https://travis-ci.org/serpapi/google-search-results-golang)
 
+<<<<<<< HEAD
 This Golang package enables to scrape and parse results from Google, Bing, Baidu, Yahoo, Yandex, Ebay, Google Schoolar and more using [SerpApi](https://serpapi.com).
  
+=======
+This Golang package enables to scrape and parse Google, Bing and Baidu results using [SerpApi](https://serpapi.com).
+>>>>>>> 69b20ee2fa6fafd049ec840264482c2767727f4f
 This project is an implementation of SerpApi in Golang 1.12
 There is no dependency for this project.
 
@@ -25,6 +29,12 @@ You take a look to our test.
 
 [The full documentation is available here.](https://serpapi.com/search-api)
 
+<<<<<<< HEAD
+=======
+
+
+free to fork this repository to add more backends.
+>>>>>>> 69b20ee2fa6fafd049ec840264482c2767727f4f
 
 ## Installation
 
@@ -214,7 +224,7 @@ data contains the account information.
 
 ## Conclusion
 
-Serp Api supports mutiple search engines and subservices all available for this Golang client.
+SerpApi supports mutiple search engines and subservices all available for this Golang client.
 
 For example: Using Google client.
 To enable a type of search, the field tbm (to be matched) must be set to:
