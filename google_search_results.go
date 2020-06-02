@@ -16,9 +16,10 @@ import (
 
 // SerpApiClient hold query parameter
 type SerpApiClient struct {
-	Engine    string
-	Parameter map[string]string
-	ApiKey    string
+	Engine     string
+	Parameter  map[string]string
+	ApiKey     string
+	HttpClient *http.Client
 }
 
 // SerpApiResponse hold response
@@ -27,27 +28,36 @@ type SerpApiResponse map[string]interface{}
 // SerpApiResponseArray hold response array
 type SerpApiResponseArray []interface{}
 
-// NewSerpApiClient create generic SerpApi client
+const (
+	// Version
+	VERSION = "2.1.0"
+)
+
+// NewSerpApiClient create generic SerpApi client which support any search engine
 func NewSerpApiClient(engine string, parameter map[string]string, apiKey string) SerpApiClient {
-	return SerpApiClient{Engine: engine, Parameter: parameter, ApiKey: apiKey}
+	// Create the http client
+	httpClient := &http.Client{
+		Timeout: time.Second * 60,
+	}
+	return SerpApiClient{Engine: engine, Parameter: parameter, ApiKey: apiKey, HttpClient: httpClient}
 }
 
-// NewGoogleSearch create client for google
+// NewGoogleClient create client for google
 func NewGoogleClient(parameter map[string]string, apiKey string) SerpApiClient {
 	return NewSerpApiClient("google", parameter, apiKey)
 }
 
-// NewBingSearch create client for bing
+// NewBingClient create client for bing
 func NewBingClient(parameter map[string]string, apiKey string) SerpApiClient {
 	return NewSerpApiClient("bing", parameter, apiKey)
 }
 
-// NewBaiduSearch create client for baidu
+// NewBaiduClient create client for baidu
 func NewBaiduClient(parameter map[string]string, apiKey string) SerpApiClient {
 	return NewSerpApiClient("baidu", parameter, apiKey)
 }
 
-// NewBaiduSearch create client for yahoo
+// NewYahooClient create client for yahoo
 func NewYahooClient(parameter map[string]string, apiKey string) SerpApiClient {
 	return NewSerpApiClient("yahoo", parameter, apiKey)
 }
@@ -67,7 +77,17 @@ func NewGoogleScholarClient(parameter map[string]string, apiKey string) SerpApiC
 	return NewSerpApiClient("google_scholar", parameter, apiKey)
 }
 
-// Set your API KEY
+// NewYandexClient create client for yandex
+func NewYandexClient(parameter map[string]string, apiKey string) SerpApiClient {
+	return NewSerpApiClient("yandex", parameter, apiKey)
+}
+
+// NewEbayClient create client for ebay
+func NewEbayClient(parameter map[string]string, apiKey string) SerpApiClient {
+	return NewSerpApiClient("ebay", parameter, apiKey)
+}
+
+// SetApiKey globaly set api_key
 func (client *SerpApiClient) SetApiKey(key string) {
 	client.ApiKey = key
 }
@@ -128,21 +148,21 @@ func (client *SerpApiClient) decodeJSON(body io.ReadCloser) (SerpApiResponse, er
 	decoder := json.NewDecoder(body)
 
 	// Response data
-	var serpApiResponse SerpApiResponse
-	err := decoder.Decode(&serpApiResponse)
+	var rsp SerpApiResponse
+	err := decoder.Decode(&rsp)
 	if err != nil {
 		return nil, errors.New("fail to decode")
 	}
 
 	// check error message
-	errorMessage, derror := serpApiResponse["error"].(string)
+	errorMessage, derror := rsp["error"].(string)
 	if derror {
 		return nil, errors.New(errorMessage)
 	}
-	return serpApiResponse, nil
+	return rsp, nil
 }
 
-// decodeJSONArray primitive function
+// decodeJSONArray decodes response body to SerpApiResponseArray
 func (client *SerpApiClient) decodeJSONArray(body io.ReadCloser) (SerpApiResponseArray, error) {
 	decoder := json.NewDecoder(body)
 	var rsp SerpApiResponseArray
@@ -153,7 +173,7 @@ func (client *SerpApiClient) decodeJSONArray(body io.ReadCloser) (SerpApiRespons
 	return rsp, nil
 }
 
-// decodeHTML primitive function
+// decodeHTML decodes response body to html string
 func (client *SerpApiClient) decodeHTML(body io.ReadCloser) (*string, error) {
 	buffer, err := ioutil.ReadAll(body)
 	if err != nil {
@@ -163,7 +183,7 @@ func (client *SerpApiClient) decodeHTML(body io.ReadCloser) (*string, error) {
 	return &text, nil
 }
 
-// Execute the HTTP get
+// execute HTTP get reuqest and returns http response
 func (client *SerpApiClient) execute(path string, output string) (*http.Response, error) {
 	query := url.Values{}
 	if client.Parameter != nil {
@@ -171,16 +191,25 @@ func (client *SerpApiClient) execute(path string, output string) (*http.Response
 			query.Add(k, v)
 		}
 	}
+
+	// api_key
 	if len(client.ApiKey) != 0 {
 		query.Add("api_key", client.ApiKey)
 	}
-	query.Add("source", "go")
-	query.Add("output", output)
-	endpoint := "https://serpapi.com" + path + "?" + query.Encode()
-	var httpClient = &http.Client{
-		Timeout: time.Second * 60,
+
+	// engine
+	if len(query.Get("engine")) == 0 {
+		query.Set("engine", client.Engine)
 	}
-	rsp, err := httpClient.Get(endpoint)
+
+	// source programming language
+	query.Add("source", "go")
+
+	// set output
+	query.Add("output", output)
+
+	endpoint := "https://serpapi.com" + path + "?" + query.Encode()
+	rsp, err := client.HttpClient.Get(endpoint)
 	if err != nil {
 		return nil, err
 	}

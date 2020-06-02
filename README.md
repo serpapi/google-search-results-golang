@@ -3,10 +3,9 @@ Google Search Results GoLang API
 
 [![Build Status](https://travis-ci.org/serpapi/google-search-results-golang.svg?branch=master)](https://travis-ci.org/serpapi/google-search-results-golang)
 
-This Golang package enables to scrape and parse Google, Bing and Baidu results using [SERP API](https://serpapi.com).
- Feel free to fork this repository to add more backends.
-
-This project is an implementation of Serp API in Golang 1.12
+This Golang package enables to scrape and parse results from Google, Bing, Baidu, Yahoo, Yandex, Ebay, Google Schoolar and more using [SerpApi](https://serpapi.com).
+ 
+This project is an implementation of SerpApi in Golang 1.12
 There is no dependency for this project.
 
 This Go module is meant to scrape and parse Google results using [SerpApi](https://serpapi.com).
@@ -16,7 +15,7 @@ The following services are provided:
  * [Search Archive API](https://serpapi.com/search-archive-api)
  * [Account API](https://serpapi.com/account-api)
 
-Serp API provides a [script builder](https://serpapi.com/demo) to get you started quickly.
+SerpApi provides a [script builder](https://serpapi.com/demo) to get you started quickly.
 
 An implementation example is provided here.
 > demo/demo.go
@@ -26,11 +25,10 @@ You take a look to our test.
 
 [The full documentation is available here.](https://serpapi.com/search-api)
 
-Feel free to fork this repository to add more backends.
 
 ## Installation
 
-Go 1.12 must be already installed.
+Go 1.10+ must be already installed.
 ```bash
 go get -u github.com/serpapi/google_search_results_golang
 ```
@@ -61,12 +59,12 @@ fmt.Println(ref["title"].(string))
 
 This example runs a search about "coffee" using your secret api key.
 
-The Serp API service (backend)
+The SerpApi service (backend)
  - searches on Google using the client: q = "coffee"
  - parses the messy HTML responses
  - return a standardizes JSON response
  - Format the request
- - Execute GET http request against Serp API service
+ - Execute GET http request against SerpApi service
  - Parse JSON response into a deep hash
 Et voila..
 
@@ -84,17 +82,9 @@ See the [playground to generate your code.](https://serpapi.com/playground)
  * [Search Archive API](#search-archive-api)
  * [Account API](#account-api)
 
-### How to set SERP API key
-The Serp API key can be provided for each client.
-
-```go
-client := GoogleSearchResults(parameter, "Your Private Key")
-```
-
 ### Search API capability
 ```go
 parameter = {
-  "engine": "yahoo",
   "q": "query",
   "google_domain": "Google Domain",
   "location": "Location Requested",
@@ -104,15 +94,21 @@ parameter = {
   "safe": "Safe Search Flag",
   "num": "Number of Results",
   "start": "Pagination Offset",
-  "serp_api_key": "Your SERP API Key",
+  "api_key": "Your SERP API Key",
   "tbm": "nws|isch|shop",
   "tbs": "custom to be search criteria",
-  "async": true|false, # allow async 
-  "output": "json|html" # output format
+  "async": true|false,  // allow async 
+  "output": "json|html" // output format
 }
 
+// api_key from https://serpapi.com/dashboard
+api_key := "your personal API key"
+
+// set search engine: google|yahoo|bing|ebay|yandex
+engine := "yahoo"
+
 // define the search client
-client := NewSerpApiClient("yahoo", parameter, apiKey)
+client := NewSerpApiClient(engine, parameter, api_key)
 
 // override an existing parameter
 client.parameter["location"] = "Portland,Oregon,United States"
@@ -208,6 +204,9 @@ data contains the account information.
 
 ## Change log
 
+ * 2.1 
+    - Add support for Yandex, Ebay, Yahoo
+    - create HTTP client only once per SerpApiClient
  * 2.0 Rewrite fully the implementation
         to be more scalable in order to support multiple engines.
  * 1.3 Add support for Bing and Baidu

@@ -75,6 +75,12 @@ func TestGoogleJSON(t *testing.T) {
 		t.Error("unexpected error", err)
 		return
 	}
+
+	if rsp["search_metadata"].(map[string]interface{})["status"] != "Success" {
+		t.Error("bad status")
+		return
+	}
+
 	if len(rsp["organic_results"].([]interface{})) < 5 {
 		t.Error("less than 5 organic result")
 		return
@@ -98,6 +104,12 @@ func TestBaiduJSON(t *testing.T) {
 		t.Error("unexpected error", err)
 		return
 	}
+
+	if rsp["search_metadata"].(map[string]interface{})["status"] != "Success" {
+		t.Error("bad status")
+		return
+	}
+
 	if len(rsp["organic_results"].([]interface{})) < 5 {
 		t.Error("less than 5 organic result")
 		return
@@ -121,6 +133,99 @@ func TestBingJSON(t *testing.T) {
 		t.Error("unexpected error", err)
 		return
 	}
+
+	if rsp["search_metadata"].(map[string]interface{})["status"] != "Success" {
+		t.Error("bad status")
+		return
+	}
+
+	if len(rsp["organic_results"].([]interface{})) < 5 {
+		t.Error("less than 5 organic result")
+		return
+	}
+}
+
+func TestYandexJSON(t *testing.T) {
+	if shoulSkip() {
+		t.Skip("API_KEY required")
+		return
+	}
+
+	parameter := map[string]string{
+		"text": "Coffee",
+	}
+
+	client := NewYandexClient(parameter, apiKey)
+	rsp, err := client.GetJSON()
+
+	if err != nil {
+		t.Error("unexpected error", err)
+		return
+	}
+
+	if rsp["search_metadata"].(map[string]interface{})["status"] != "Success" {
+		t.Error("bad status")
+		return
+	}
+
+	if len(rsp["organic_results"].([]interface{})) < 5 {
+		t.Error("less than 5 organic result")
+		return
+	}
+}
+
+func TestYahooJSON(t *testing.T) {
+	if shoulSkip() {
+		t.Skip("API_KEY required")
+		return
+	}
+
+	parameter := map[string]string{
+		"p": "Coffee",
+	}
+
+	client := NewYahooClient(parameter, apiKey)
+	rsp, err := client.GetJSON()
+
+	if err != nil {
+		t.Error("unexpected error", err)
+		return
+	}
+
+	if rsp["search_metadata"].(map[string]interface{})["status"] != "Success" {
+		t.Error("bad status")
+		return
+	}
+
+	if len(rsp["organic_results"].([]interface{})) < 5 {
+		t.Error("less than 5 organic result")
+		return
+	}
+}
+
+func TestEbayJSON(t *testing.T) {
+	if shoulSkip() {
+		t.Skip("API_KEY required")
+		return
+	}
+
+	parameter := map[string]string{
+		"_nkw": "Coffee",
+	}
+
+	client := NewEbayClient(parameter, apiKey)
+	rsp, err := client.GetJSON()
+
+	if err != nil {
+		t.Error("unexpected error", err)
+		return
+	}
+
+	if rsp["search_metadata"].(map[string]interface{})["status"] != "Success" {
+		t.Error("bad status")
+		return
+	}
+
 	if len(rsp["organic_results"].([]interface{})) < 5 {
 		t.Error("less than 5 organic result")
 		return
