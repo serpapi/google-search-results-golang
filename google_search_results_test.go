@@ -43,8 +43,8 @@ func TestGoogleQuickStart(t *testing.T) {
 		"device":        "desktop",
 	}
 
-	client := NewGoogleClient(parameter, apiKey)
-	rsp, err := client.GetJSON()
+	search := NewGoogleSearch(parameter, apiKey)
+	rsp, err := search.GetJSON()
 
 	if err != nil {
 		t.Error(err)
@@ -68,8 +68,8 @@ func TestGoogleJSON(t *testing.T) {
 		"q":        "Coffee",
 		"location": "Portland"}
 
-	client := NewGoogleClient(parameter, apiKey)
-	rsp, err := client.GetJSON()
+	search := NewGoogleSearch(parameter, apiKey)
+	rsp, err := search.GetJSON()
 
 	if err != nil {
 		t.Error("unexpected error", err)
@@ -97,8 +97,8 @@ func TestBaiduJSON(t *testing.T) {
 		"q":        "Coffee",
 		"location": "Portland"}
 
-	client := NewBaiduClient(parameter, apiKey)
-	rsp, err := client.GetJSON()
+	search := NewBaiduSearch(parameter, apiKey)
+	rsp, err := search.GetJSON()
 
 	if err != nil {
 		t.Error("unexpected error", err)
@@ -126,8 +126,8 @@ func TestBingJSON(t *testing.T) {
 		"q":        "Coffee",
 		"location": "Portland"}
 
-	client := NewBingClient(parameter, apiKey)
-	rsp, err := client.GetJSON()
+	search := NewBingSearch(parameter, apiKey)
+	rsp, err := search.GetJSON()
 
 	if err != nil {
 		t.Error("unexpected error", err)
@@ -155,8 +155,8 @@ func TestYandexJSON(t *testing.T) {
 		"text": "Coffee",
 	}
 
-	client := NewYandexClient(parameter, apiKey)
-	rsp, err := client.GetJSON()
+	search := NewYandexSearch(parameter, apiKey)
+	rsp, err := search.GetJSON()
 
 	if err != nil {
 		t.Error("unexpected error", err)
@@ -184,8 +184,8 @@ func TestYahooJSON(t *testing.T) {
 		"p": "Coffee",
 	}
 
-	client := NewYahooClient(parameter, apiKey)
-	rsp, err := client.GetJSON()
+	search := NewYahooSearch(parameter, apiKey)
+	rsp, err := search.GetJSON()
 
 	if err != nil {
 		t.Error("unexpected error", err)
@@ -213,8 +213,8 @@ func TestEbayJSON(t *testing.T) {
 		"_nkw": "Coffee",
 	}
 
-	client := NewEbayClient(parameter, apiKey)
-	rsp, err := client.GetJSON()
+	search := NewEbaySearch(parameter, apiKey)
+	rsp, err := search.GetJSON()
 
 	if err != nil {
 		t.Error("unexpected error", err)
@@ -242,8 +242,8 @@ func TestGoogleJSONwithGlobalKey(t *testing.T) {
 		"q":        "Coffee",
 		"location": "Portland"}
 
-	client := NewGoogleClient(parameter, apiKey)
-	rsp, err := client.GetJSON()
+	search := NewGoogleSearch(parameter, apiKey)
+	rsp, err := search.GetJSON()
 	if err != nil {
 		t.Error("unexpected error", err)
 		return
@@ -265,8 +265,8 @@ func TestGoogleGetHTML(t *testing.T) {
 		"q":        "Coffee",
 		"location": "Portland"}
 
-	client := NewGoogleClient(parameter, apiKey)
-	data, err := client.GetHTML()
+	search := NewGoogleSearch(parameter, apiKey)
+	data, err := search.GetHTML()
 	if err != nil {
 		t.Error("err must be nil")
 		return
@@ -281,8 +281,8 @@ func TestGoogleDecodeJson(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	var client SerpApiClient
-	rsp, err := client.decodeJSON(reader)
+	var search SerpApiSearch
+	rsp, err := search.decodeJSON(reader)
 	if err != nil {
 		t.Error("error should be nil", err)
 		return
@@ -302,8 +302,8 @@ func TestGoogleDecodeJsonPage20(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	var client SerpApiClient
-	rsp, err := client.decodeJSON(reader)
+	var search SerpApiSearch
+	rsp, err := search.decodeJSON(reader)
 	if err != nil {
 		t.Error("error should be nil")
 		t.Error(err)
@@ -322,8 +322,8 @@ func TestGoogleDecodeJsonError(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	var client SerpApiClient
-	rsp, err := client.decodeJSON(reader)
+	var search SerpApiSearch
+	rsp, err := search.decodeJSON(reader)
 	if rsp != nil {
 		t.Error("response should not be nil")
 		return
@@ -341,8 +341,8 @@ func TestGoogleGetLocation(t *testing.T) {
 
 	var rsp SerpApiResponseArray
 	var err error
-	client := NewSerpApiClient("google", map[string]string{}, apiKey)
-	rsp, err = client.GetLocation("Austin", 3)
+	search := NewSerpApiSearch("google", map[string]string{}, apiKey)
+	rsp, err = search.GetLocation("Austin", 3)
 
 	if err != nil {
 		t.Error(err)
@@ -363,13 +363,13 @@ func TestGoogleGetAccount(t *testing.T) {
 		t.Skip("API_KEY required")
 		return
 	}
-	// disabled on Travis CI 
+	// disabled on Travis CI
 	return
 
 	var rsp SerpApiResponse
 	var err error
-	client := NewSerpApiClient("google", map[string]string{}, apiKey)
-	rsp, err = client.GetAccount()
+	search := NewSerpApiSearch("google", map[string]string{}, apiKey)
+	rsp, err = search.GetAccount()
 
 	if err != nil {
 		t.Error("fail to fetch data")
@@ -389,15 +389,15 @@ func TestGoogleSearchArchive(t *testing.T) {
 		t.Skip("API_KEY required")
 		return
 	}
-        // disabled on Travis CI 
+	// disabled on Travis CI
 	return
-	
+
 	parameter := map[string]string{
 		"q":        "Coffee",
 		"location": "Portland"}
 
-	client := NewGoogleClient(parameter, apiKey)
-	rsp, err := client.GetJSON()
+	search := NewGoogleSearch(parameter, apiKey)
+	rsp, err := search.GetJSON()
 
 	if err != nil {
 		t.Error("unexpected error", err)
@@ -410,7 +410,7 @@ func TestGoogleSearchArchive(t *testing.T) {
 		t.Error("search_metadata.id must be defined")
 	}
 
-	searchArchive, err := client.GetSearchArchive(searchID)
+	searchArchive, err := search.GetSearchArchive(searchID)
 	if err != nil {
 		t.Error(err)
 		return

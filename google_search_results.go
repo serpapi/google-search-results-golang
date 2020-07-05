@@ -14,12 +14,12 @@ import (
 	"time"
 )
 
-// SerpApiClient hold query parameter
-type SerpApiClient struct {
+// SerpApiSearch hold query parameter
+type SerpApiSearch struct {
 	Engine     string
 	Parameter  map[string]string
 	ApiKey     string
-	HttpClient *http.Client
+	HttpSearch *http.Client
 }
 
 // SerpApiResponse hold response
@@ -33,117 +33,117 @@ const (
 	VERSION = "2.1.0"
 )
 
-// NewSerpApiClient create generic SerpApi client which support any search engine
-func NewSerpApiClient(engine string, parameter map[string]string, apiKey string) SerpApiClient {
-	// Create the http client
-	httpClient := &http.Client{
+// NewSerpApiSearch create generic SerpApi search which support any search engine
+func NewSerpApiSearch(engine string, parameter map[string]string, apiKey string) SerpApiSearch {
+	// Create the http search
+	httpSearch := &http.Client{
 		Timeout: time.Second * 60,
 	}
-	return SerpApiClient{Engine: engine, Parameter: parameter, ApiKey: apiKey, HttpClient: httpClient}
+	return SerpApiSearch{Engine: engine, Parameter: parameter, ApiKey: apiKey, HttpSearch: httpSearch}
 }
 
-// NewGoogleClient create client for google
-func NewGoogleClient(parameter map[string]string, apiKey string) SerpApiClient {
-	return NewSerpApiClient("google", parameter, apiKey)
+// NewGoogleSearch create search for google
+func NewGoogleSearch(parameter map[string]string, apiKey string) SerpApiSearch {
+	return NewSerpApiSearch("google", parameter, apiKey)
 }
 
-// NewBingClient create client for bing
-func NewBingClient(parameter map[string]string, apiKey string) SerpApiClient {
-	return NewSerpApiClient("bing", parameter, apiKey)
+// NewBingSearch create search for bing
+func NewBingSearch(parameter map[string]string, apiKey string) SerpApiSearch {
+	return NewSerpApiSearch("bing", parameter, apiKey)
 }
 
-// NewBaiduClient create client for baidu
-func NewBaiduClient(parameter map[string]string, apiKey string) SerpApiClient {
-	return NewSerpApiClient("baidu", parameter, apiKey)
+// NewBaiduSearch create search for baidu
+func NewBaiduSearch(parameter map[string]string, apiKey string) SerpApiSearch {
+	return NewSerpApiSearch("baidu", parameter, apiKey)
 }
 
-// NewYahooClient create client for yahoo
-func NewYahooClient(parameter map[string]string, apiKey string) SerpApiClient {
-	return NewSerpApiClient("yahoo", parameter, apiKey)
+// NewYahooSearch create search for yahoo
+func NewYahooSearch(parameter map[string]string, apiKey string) SerpApiSearch {
+	return NewSerpApiSearch("yahoo", parameter, apiKey)
 }
 
-// NewGoogleMapsClient create client for google_maps
-func NewGoogleMapsClient(parameter map[string]string, apiKey string) SerpApiClient {
-	return NewSerpApiClient("google_maps", parameter, apiKey)
+// NewGoogleMapsSearch create search for google_maps
+func NewGoogleMapsSearch(parameter map[string]string, apiKey string) SerpApiSearch {
+	return NewSerpApiSearch("google_maps", parameter, apiKey)
 }
 
-// NewGoogleProductClient create client for google_product
-func NewGoogleProductClient(parameter map[string]string, apiKey string) SerpApiClient {
-	return NewSerpApiClient("google_product", parameter, apiKey)
+// NewGoogleProductSearch create search for google_product
+func NewGoogleProductSearch(parameter map[string]string, apiKey string) SerpApiSearch {
+	return NewSerpApiSearch("google_product", parameter, apiKey)
 }
 
-// NewGoogleScholarClient create client for google_product
-func NewGoogleScholarClient(parameter map[string]string, apiKey string) SerpApiClient {
-	return NewSerpApiClient("google_scholar", parameter, apiKey)
+// NewGoogleScholarSearch create search for google_product
+func NewGoogleScholarSearch(parameter map[string]string, apiKey string) SerpApiSearch {
+	return NewSerpApiSearch("google_scholar", parameter, apiKey)
 }
 
-// NewYandexClient create client for yandex
-func NewYandexClient(parameter map[string]string, apiKey string) SerpApiClient {
-	return NewSerpApiClient("yandex", parameter, apiKey)
+// NewYandexSearch create search for yandex
+func NewYandexSearch(parameter map[string]string, apiKey string) SerpApiSearch {
+	return NewSerpApiSearch("yandex", parameter, apiKey)
 }
 
-// NewEbayClient create client for ebay
-func NewEbayClient(parameter map[string]string, apiKey string) SerpApiClient {
-	return NewSerpApiClient("ebay", parameter, apiKey)
+// NewEbaySearch create search for ebay
+func NewEbaySearch(parameter map[string]string, apiKey string) SerpApiSearch {
+	return NewSerpApiSearch("ebay", parameter, apiKey)
 }
 
 // SetApiKey globaly set api_key
-func (client *SerpApiClient) SetApiKey(key string) {
-	client.ApiKey = key
+func (search *SerpApiSearch) SetApiKey(key string) {
+	search.ApiKey = key
 }
 
 // GetJSON returns SerpApiResponse containing
-func (client *SerpApiClient) GetJSON() (SerpApiResponse, error) {
-	rsp, err := client.execute("/search", "json")
+func (search *SerpApiSearch) GetJSON() (SerpApiResponse, error) {
+	rsp, err := search.execute("/search", "json")
 	if err != nil {
 		return nil, err
 	}
-	return client.decodeJSON(rsp.Body)
+	return search.decodeJSON(rsp.Body)
 }
 
 // GetHTML returns html as a string
-func (client *SerpApiClient) GetHTML() (*string, error) {
-	rsp, err := client.execute("/search", "html")
+func (search *SerpApiSearch) GetHTML() (*string, error) {
+	rsp, err := search.execute("/search", "html")
 	if err != nil {
 		return nil, err
 	}
-	return client.decodeHTML(rsp.Body)
+	return search.decodeHTML(rsp.Body)
 }
 
 // GetLocation returns closest location
-func (client *SerpApiClient) GetLocation(q string, limit int) (SerpApiResponseArray, error) {
-	client.Parameter = map[string]string{
+func (search *SerpApiSearch) GetLocation(q string, limit int) (SerpApiResponseArray, error) {
+	search.Parameter = map[string]string{
 		"q":     q,
 		"limit": string(limit),
 	}
-	rsp, err := client.execute("/locations.json", "json")
+	rsp, err := search.execute("/locations.json", "json")
 	if err != nil {
 		return nil, err
 	}
-	return client.decodeJSONArray(rsp.Body)
+	return search.decodeJSONArray(rsp.Body)
 }
 
 // GetAccount return account information
-func (client *SerpApiClient) GetAccount() (SerpApiResponse, error) {
-	client.Parameter = map[string]string{}
-	rsp, err := client.execute("/account", "json")
+func (search *SerpApiSearch) GetAccount() (SerpApiResponse, error) {
+	search.Parameter = map[string]string{}
+	rsp, err := search.execute("/account", "json")
 	if err != nil {
 		return nil, err
 	}
-	return client.decodeJSON(rsp.Body)
+	return search.decodeJSON(rsp.Body)
 }
 
 // GetSearchArchive retrieve search from the archive using the Search Archive API
-func (client *SerpApiClient) GetSearchArchive(searchID string) (SerpApiResponse, error) {
-	rsp, err := client.execute("/searches/"+searchID+".json", "json")
+func (search *SerpApiSearch) GetSearchArchive(searchID string) (SerpApiResponse, error) {
+	rsp, err := search.execute("/searches/"+searchID+".json", "json")
 	if err != nil {
 		return nil, err
 	}
-	return client.decodeJSON(rsp.Body)
+	return search.decodeJSON(rsp.Body)
 }
 
 // decodeJson response
-func (client *SerpApiClient) decodeJSON(body io.ReadCloser) (SerpApiResponse, error) {
+func (search *SerpApiSearch) decodeJSON(body io.ReadCloser) (SerpApiResponse, error) {
 	// Decode JSON from response body
 	decoder := json.NewDecoder(body)
 
@@ -163,7 +163,7 @@ func (client *SerpApiClient) decodeJSON(body io.ReadCloser) (SerpApiResponse, er
 }
 
 // decodeJSONArray decodes response body to SerpApiResponseArray
-func (client *SerpApiClient) decodeJSONArray(body io.ReadCloser) (SerpApiResponseArray, error) {
+func (search *SerpApiSearch) decodeJSONArray(body io.ReadCloser) (SerpApiResponseArray, error) {
 	decoder := json.NewDecoder(body)
 	var rsp SerpApiResponseArray
 	err := decoder.Decode(&rsp)
@@ -174,7 +174,7 @@ func (client *SerpApiClient) decodeJSONArray(body io.ReadCloser) (SerpApiRespons
 }
 
 // decodeHTML decodes response body to html string
-func (client *SerpApiClient) decodeHTML(body io.ReadCloser) (*string, error) {
+func (search *SerpApiSearch) decodeHTML(body io.ReadCloser) (*string, error) {
 	buffer, err := ioutil.ReadAll(body)
 	if err != nil {
 		return nil, err
@@ -184,22 +184,22 @@ func (client *SerpApiClient) decodeHTML(body io.ReadCloser) (*string, error) {
 }
 
 // execute HTTP get reuqest and returns http response
-func (client *SerpApiClient) execute(path string, output string) (*http.Response, error) {
+func (search *SerpApiSearch) execute(path string, output string) (*http.Response, error) {
 	query := url.Values{}
-	if client.Parameter != nil {
-		for k, v := range client.Parameter {
+	if search.Parameter != nil {
+		for k, v := range search.Parameter {
 			query.Add(k, v)
 		}
 	}
 
 	// api_key
-	if len(client.ApiKey) != 0 {
-		query.Add("api_key", client.ApiKey)
+	if len(search.ApiKey) != 0 {
+		query.Add("api_key", search.ApiKey)
 	}
 
 	// engine
 	if len(query.Get("engine")) == 0 {
-		query.Set("engine", client.Engine)
+		query.Set("engine", search.Engine)
 	}
 
 	// source programming language
@@ -209,7 +209,7 @@ func (client *SerpApiClient) execute(path string, output string) (*http.Response
 	query.Add("output", output)
 
 	endpoint := "https://serpapi.com" + path + "?" + query.Encode()
-	rsp, err := client.HttpClient.Get(endpoint)
+	rsp, err := search.HttpSearch.Get(endpoint)
 	if err != nil {
 		return nil, err
 	}
