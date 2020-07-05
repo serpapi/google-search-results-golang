@@ -60,7 +60,7 @@ fmt.Println(ref["title"].(string))
 This example runs a search about "coffee" using your secret api key.
 
 The SerpApi service (backend)
- - searches on Google using the client: q = "coffee"
+ - searches on Google using the search: q = "coffee"
  - parses the messy HTML responses
  - return a standardizes JSON response
  - Format the request
@@ -75,7 +75,7 @@ Alternatively, you can search:
 See the [playground to generate your code.](https://serpapi.com/playground)
 
 ## Example
- * [How to set SERP API key](#how-to-set-serp-api-key)
+ * [How to set SerpApi key](#how-to-set-serp-api-key)
  * [Search API capability](#search-api-capability)
  * [Example by specification](#example-by-specification)
  * [Location API](#location-api)
@@ -107,17 +107,17 @@ api_key := "your personal API key"
 // set search engine: google|yahoo|bing|ebay|yandex
 engine := "yahoo"
 
-// define the search client
-client := NewSerpApiClient(engine, parameter, api_key)
+// define the search search
+search := NewSerpApiSearch(engine, parameter, api_key)
 
 // override an existing parameter
-client.parameter["location"] = "Portland,Oregon,United States"
+search.parameter["location"] = "Portland,Oregon,United States"
 
 // search format return as raw html
-data, err := client.GetHTML()
+data, err := search.GetHTML()
 
 // search format returns a json
-data, err := client.GetJSON()
+data, err := search.GetJSON()
 ```
 
 (the full documentation)[https://serpapi.com/search-api]
@@ -147,7 +147,7 @@ make test
 ```go
 var locationList SerpResponseArray
 var err error
-locationList, err = client.GetLocation("Austin", 3)
+locationList, err = search.GetLocation("Austin", 3)
 
 if err != nil {
   log.Println(err)
@@ -165,15 +165,15 @@ parameter := map[string]string{
   "location": "Portland"
   }
 
-client := NewGoogleClient(parameter, "your user key")
-rsp, err := client.GetJSON()
+search := NewGoogleClient(parameter, "your user key")
+rsp, err := search.GetJSON()
 
 if err != nil {
   log.Println("unexpected error", err)
 }
 
 searchID := rsp["search_metadata"].(map[string]interface{})["id"].(string)
-searchArchive, err := client.GetSearchArchive(searchID)
+searchArchive, err := search.GetSearchArchive(searchID)
 if err != nil {
   log.Println(err)
   return
@@ -192,7 +192,7 @@ it prints the search ID from the archive.
 ```go
 var data SerpResponse
 var err error
-data, err = client.GetAccount()
+data, err = search.GetAccount()
 
 if err != nil {
   log.Println(err)
@@ -204,9 +204,12 @@ data contains the account information.
 
 ## Change log
 
+ * 3.0
+   - Naming convention change.
+     Rename Client to Search
  * 2.1 
     - Add support for Yandex, Ebay, Yahoo
-    - create HTTP client only once per SerpApiClient
+    - create HTTP search only once per SerpApiClient
  * 2.0 Rewrite fully the implementation
         to be more scalable in order to support multiple engines.
  * 1.3 Add support for Bing and Baidu
@@ -214,16 +217,16 @@ data contains the account information.
 
 ## Conclusion
 
-SerpApi supports mutiple search engines and subservices all available for this Golang client.
+SerpApi supports mutiple search engines and subservices all available for this Golang search.
 
-For example: Using Google client.
+For example: Using Google search.
 To enable a type of search, the field tbm (to be matched) must be set to:
 
  * isch: Google Images API.
  * nws: Google News API.
  * shop: Google Shopping API.
  * any other Google service should work out of the box.
- * (no tbm parameter): regular Google client.
+ * (no tbm parameter): regular Google search.
 
 The field `tbs` allows to customize the search even more.
 

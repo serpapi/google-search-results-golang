@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	serpapi "github.com/serpapi/google-search-results-golang"
 	"os"
+
+	serpapi "github.com/serpapi/google-search-results-golang"
 )
 
 /***
- * demo how to create a client for SerpApi
+ * demo how to create a search for SerpApi
  *
  * go get -u github.com/serpapi/google_search_results_golang
  */
@@ -17,13 +18,13 @@ func main() {
 		"location": "Austin,Texas",
 	}
 
-	client := serpapi.NewGoogleClient(parameter, os.Getenv("API_KEY"))
-	serpResponse, err := client.GetJSON()
+	search := serpapi.NewGoogleSearch(parameter, os.Getenv("API_KEY"))
+	data, err := search.GetJSON()
 	if err != nil {
-		fmt.Println("error: ", err)
-		return
+		panic(err)
 	}
-	results := serpResponse["organic_results"].([]interface{})
+	// decode data and display
+	results := data["organic_results"].([]interface{})
 	firstResult := results[0].(map[string]interface{})
 	fmt.Println(firstResult["title"].(string))
 }
