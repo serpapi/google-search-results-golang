@@ -32,8 +32,9 @@ jobs:
 
     - name: Build
       run: go build -v .
-      env:
-        API_KEY: ${{ secrets.API_KEY }}
 
     - name: Test
       run: go test -v .
+      env:
+        API_KEY: ${{ secrets.API_KEY }}
+
