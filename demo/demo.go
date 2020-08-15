@@ -8,7 +8,7 @@ import (
 )
 
 /***
- * demo how to create a search for SerpApi
+ * Demonstrate how to search on Google
  *
  * go get -u github.com/serpapi/google_search_results_golang
  */

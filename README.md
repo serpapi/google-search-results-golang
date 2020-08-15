@@ -48,8 +48,8 @@ parameter := map[string]string{
     "location":     "Portland"
 }
 
-query := NewGoogleClient(parameter, api)
-// Many clients available: bing, yahoo, baidu, googemaps, googleproduct, googlescholar
+query := NewGoogleSearch(parameter, api)
+// Many search engine available: bing, yahoo, baidu, googemaps, googleproduct, googlescholar, ebay, walmart, youtube..
 
 rsp, err := query.json()
 results := rsp["organic_results"].([]interface{})
@@ -108,7 +108,7 @@ api_key := "your personal API key"
 engine := "yahoo"
 
 // define the search search
-search := NewSerpApiSearch(engine, parameter, api_key)
+search := NewSearch(engine, parameter, api_key)
 
 // override an existing parameter
 search.parameter["location"] = "Portland,Oregon,United States"
@@ -129,16 +129,14 @@ see below for more hands on examples.
 ### Example by specification
 
 We love true open source, continuous integration and Test Drive Development (TDD). 
- We are using "go test" [our infrastructure around the clock](https://travis-ci.org/serpapi/google-search-results-golang) to achieve the best QoS (Quality Of Service).
+ We are using "go test" to test our infrastructure around the clock
+  to achieve the best QoS (Quality Of Service).
  
 The directory test/ includes specification/examples.
 
-Set your api key.
+To run the test from bash using make
 ```bash
 export API_KEY="your secret key"
-```
-
-```bash
 make test
 ```
 
@@ -165,7 +163,7 @@ parameter := map[string]string{
   "location": "Portland"
   }
 
-search := NewGoogleClient(parameter, "your user key")
+search := NewGoogleSearch(parameter, "your user key")
 rsp, err := search.GetJSON()
 
 if err != nil {
@@ -190,7 +188,7 @@ it prints the search ID from the archive.
 
 ### Account API
 ```go
-var data SerpResponse
+var data SearchResult
 var err error
 data, err = search.GetAccount()
 

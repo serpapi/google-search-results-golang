@@ -1,4 +1,4 @@
-package google_search_results
+package search
 
 import (
 	"log"
@@ -94,10 +94,39 @@ func TestBaiduJSON(t *testing.T) {
 	}
 
 	parameter := map[string]string{
-		"q":        "Coffee",
-		"location": "Portland"}
+		"q": "Coffee",
+	}
 
 	search := NewBaiduSearch(parameter, apiKey)
+	rsp, err := search.GetJSON()
+
+	if err != nil {
+		t.Error("unexpected error", err)
+		return
+	}
+
+	if rsp["search_metadata"].(map[string]interface{})["status"] != "Success" {
+		t.Error("bad status")
+		return
+	}
+
+	if len(rsp["organic_results"].([]interface{})) < 5 {
+		t.Error("less than 5 organic result")
+		return
+	}
+}
+
+func TesNewtSearch(t *testing.T) {
+	if shoulSkip() {
+		t.Skip("API_KEY required")
+		return
+	}
+
+	parameter := map[string]string{
+		"q": "Coffee",
+	}
+
+	search := NewSearch("baidu", parameter, apiKey)
 	rsp, err := search.GetJSON()
 
 	if err != nil {
@@ -281,7 +310,7 @@ func TestGoogleDecodeJson(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	var search SerpApiSearch
+	var search Search
 	rsp, err := search.decodeJSON(reader)
 	if err != nil {
 		t.Error("error should be nil", err)
@@ -302,7 +331,7 @@ func TestGoogleDecodeJsonPage20(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	var search SerpApiSearch
+	var search Search
 	rsp, err := search.decodeJSON(reader)
 	if err != nil {
 		t.Error("error should be nil")
@@ -322,7 +351,7 @@ func TestGoogleDecodeJsonError(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	var search SerpApiSearch
+	var search Search
 	rsp, err := search.decodeJSON(reader)
 	if rsp != nil {
 		t.Error("response should not be nil")
@@ -339,9 +368,9 @@ func TestGoogleDecodeJsonError(t *testing.T) {
 
 func TestGoogleGetLocation(t *testing.T) {
 
-	var rsp SerpApiResponseArray
+	var rsp SearchResultArray
 	var err error
-	search := NewSerpApiSearch("google", map[string]string{}, apiKey)
+	search := NewSearch("google", map[string]string{}, apiKey)
 	rsp, err = search.GetLocation("Austin", 3)
 
 	if err != nil {
@@ -363,12 +392,10 @@ func TestGoogleGetAccount(t *testing.T) {
 		t.Skip("API_KEY required")
 		return
 	}
-	// disabled on Travis CI
-	return
 
-	var rsp SerpApiResponse
+	var rsp SearchResult
 	var err error
-	search := NewSerpApiSearch("google", map[string]string{}, apiKey)
+	search := NewSearch("google", map[string]string{}, apiKey)
 	rsp, err = search.GetAccount()
 
 	if err != nil {
@@ -389,8 +416,6 @@ func TestGoogleSearchArchive(t *testing.T) {
 		t.Skip("API_KEY required")
 		return
 	}
-	// disabled on Travis CI
-	return
 
 	parameter := map[string]string{
 		"q":        "Coffee",
@@ -405,9 +430,9 @@ func TestGoogleSearchArchive(t *testing.T) {
 	}
 
 	searchID := rsp["search_metadata"].(map[string]interface{})["id"].(string)
-
 	if len(searchID) == 0 {
 		t.Error("search_metadata.id must be defined")
+		return
 	}
 
 	searchArchive, err := search.GetSearchArchive(searchID)
