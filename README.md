@@ -204,7 +204,9 @@ data contains the account information.
 
  * 3.0
    - Naming convention change.
-     Rename Client to Search
+   - Rename Client to Search
+   - Fix lint issue
+   - Add walmart and youtube
  * 2.1 
     - Add support for Yandex, Ebay, Yahoo
     - create HTTP search only once per SerpApiClient
