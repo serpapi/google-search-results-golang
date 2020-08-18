@@ -11,6 +11,8 @@ import (
 
 // decodeJson response
 func (search *Search) decodeJSON(body io.ReadCloser) (SearchResult, error) {
+	defer body.Close()
+
 	// Decode JSON from response body
 	decoder := json.NewDecoder(body)
 
@@ -31,6 +33,7 @@ func (search *Search) decodeJSON(body io.ReadCloser) (SearchResult, error) {
 
 // decodeJSONArray decodes response body to SearchResultArray
 func (search *Search) decodeJSONArray(body io.ReadCloser) (SearchResultArray, error) {
+	defer body.Close()
 	decoder := json.NewDecoder(body)
 	var rsp SearchResultArray
 	err := decoder.Decode(&rsp)
@@ -42,6 +45,7 @@ func (search *Search) decodeJSONArray(body io.ReadCloser) (SearchResultArray, er
 
 // decodeHTML decodes response body to html string
 func (search *Search) decodeHTML(body io.ReadCloser) (*string, error) {
+	defer body.Close()
 	buffer, err := ioutil.ReadAll(body)
 	if err != nil {
 		return nil, err
