@@ -201,7 +201,8 @@ log.Println(data)
 data contains the account information.
 
 ## Change log
-
+ * 3.1
+   - Add home depot search engine
  * 3.0
    - Naming convention change.
    - Rename Client to Search

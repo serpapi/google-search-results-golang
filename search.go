@@ -6,6 +6,7 @@ package search
 
 import (
 	"net/http"
+	"fmt"
 	"time"
 )
 
@@ -73,6 +74,11 @@ func NewWalmartSearch(parameter map[string]string, apiKey string) Search {
 	return NewSearch("walmart", parameter, apiKey)
 }
 
+// NewHomeDepotSearch creates search for ebay
+func NewHomeDepotSearch(parameter map[string]string, apiKey string) Search {
+	return NewSearch("home_depot", parameter, apiKey)
+}
+
 // SetApiKey globaly set api_key
 func (search *Search) SetApiKey(key string) {
 	search.ApiKey = key
@@ -100,7 +106,7 @@ func (search *Search) GetHTML() (*string, error) {
 func (search *Search) GetLocation(location string, limit int) (SearchResultArray, error) {
 	search.Parameter = map[string]string{
 		"q":     location,
-		"limit": string(limit),
+		"limit": fmt.Sprint(limit),
 	}
 	rsp, err := search.execute("/locations.json", "json")
 	if err != nil {

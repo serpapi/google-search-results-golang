@@ -168,8 +168,11 @@ func TestBingJSON(t *testing.T) {
 		return
 	}
 
-	if len(rsp["organic_results"].([]interface{})) < 5 {
+	// bing results are mostly advertising. not so great!
+	if len(rsp["organic_results"].([]interface{})) < 3 {
 		t.Error("less than 5 organic result")
+		t.Error("response:")
+		t.Error(rsp["search_metadata"])
 		return
 	}
 }
@@ -227,6 +230,35 @@ func TestYahooJSON(t *testing.T) {
 	}
 
 	if len(rsp["organic_results"].([]interface{})) < 5 {
+		t.Error("less than 5 organic result")
+		return
+	}
+}
+
+func TestHomeDepotJSON(t *testing.T) {
+	if shoulSkip() {
+		t.Skip("API_KEY required")
+		return
+	}
+
+	parameter := map[string]string{
+		"q": "Coffee",
+	}
+
+	search := NewHomeDepotSearch(parameter, apiKey)
+	rsp, err := search.GetJSON()
+
+	if err != nil {
+		t.Error("unexpected error", err)
+		return
+	}
+
+	if rsp["search_metadata"].(map[string]interface{})["status"] != "Success" {
+		t.Error("bad status")
+		return
+	}
+
+	if len(rsp["products"].([]interface{})) < 5 {
 		t.Error("less than 5 organic result")
 		return
 	}
