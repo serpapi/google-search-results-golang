@@ -1,7 +1,7 @@
 Google Search Results GoLang API
 ===
 
-![Go](https://github.com/serpapi/google-search-results-golang/workflows/Go/badge.svg)
+![test](https://github.com/serpapi/google-search-results-golang/workflows/Go/badge.svg)
 
 This Golang package enables to scrape and parse results from Google, Bing, Baidu, Yahoo, Yandex, Ebay, Google Schoolar and more using [SerpApi](https://serpapi.com).
  
@@ -75,7 +75,6 @@ Alternatively, you can search:
 See the [playground to generate your code.](https://serpapi.com/playground)
 
 ## Example
- * [How to set SerpApi key](#how-to-set-serp-api-key)
  * [Search API capability](#search-api-capability)
  * [Example by specification](#example-by-specification)
  * [Location API](#location-api)
@@ -125,20 +124,6 @@ data, err := search.GetJSON()
 Full example: [https://github.com/serpapi/google-search-results-golang/blob/master/demo/demo.go]
 
 see below for more hands on examples.
-
-### Example by specification
-
-We love true open source, continuous integration and Test Drive Development (TDD). 
- We are using "go test" to test our infrastructure around the clock
-  to achieve the best QoS (Quality Of Service).
- 
-The directory test/ includes specification/examples.
-
-To run the test from bash using make
-```bash
-export API_KEY="your secret key"
-make test
-```
 
 ### Location API
 
@@ -200,6 +185,26 @@ log.Println(data)
 ```
 data contains the account information.
 
+### Example by specification
+
+We love true open source, continuous integration and Test Drive Development (TDD). 
+ We are using "go test" to test our infrastructure around the clock
+  to achieve the best QoS (Quality Of Service).
+ 
+The directory test/ includes specification/examples.
+
+To run the test from bash using make
+```bash
+export API_KEY="your secret key"
+make test
+```
+
+### Error management
+
+This library follows the basic error management solution provided by Go.
+ A simple error is returned in case something goes wrong. 
+ The error wraps a simple error message.
+ 
 ## Change log
  * 3.1
    - Add home depot search engine
