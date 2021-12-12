@@ -1,3 +1,3 @@
 module github.com/serpapi/google-search-results-golang
 
-go 1.13
+go 1.17
