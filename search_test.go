@@ -1,7 +1,6 @@
 package search
 
 import (
-	"log"
 	"os"
 	"reflect"
 	"strings"
@@ -13,10 +12,8 @@ var apiKey string
 func TestMain(m *testing.M) {
 	apiKey = os.Getenv("API_KEY")
 	if len(apiKey) == 0 {
-		apiKey = "demo"
+		panic("API_KEY must be defined!")
 	}
-	log.Println("API_KEY: " + apiKey)
-
 	// call flag.Parse() here if TestMain uses flags
 	os.Exit(m.Run())
 }
@@ -289,6 +286,64 @@ func TestEbayJSON(t *testing.T) {
 
 	if len(rsp["organic_results"].([]interface{})) < 5 {
 		t.Error("less than 5 organic result")
+		return
+	}
+}
+
+func TestAppleStoreSearch(t *testing.T) {
+	if shoulSkip() {
+		t.Skip("API_KEY required")
+		return
+	}
+
+	parameter := map[string]string{
+		"term": "Coffee",
+	}
+
+	search := NewAppleStoreSearch(parameter, apiKey)
+	rsp, err := search.GetJSON()
+
+	if err != nil {
+		t.Error("unexpected error", err)
+		return
+	}
+
+	if rsp["search_metadata"].(map[string]interface{})["status"] != "Success" {
+		t.Error("bad status")
+		return
+	}
+
+	if len(rsp["organic_results"].([]interface{})) < 5 {
+		t.Error("less than 5 organic result")
+		return
+	}
+}
+
+func TestNaverSearch(t *testing.T) {
+	if shoulSkip() {
+		t.Skip("API_KEY required")
+		return
+	}
+
+	parameter := map[string]string{
+		"query": "Coffee",
+	}
+
+	search := NewNaverSearch(parameter, apiKey)
+	rsp, err := search.GetJSON()
+
+	if err != nil {
+		t.Error("unexpected error", err)
+		return
+	}
+
+	if rsp["search_metadata"].(map[string]interface{})["status"] != "Success" {
+		t.Error("bad status")
+		return
+	}
+
+	if len(rsp["ads_results"].([]interface{})) < 5 {
+		t.Error("less than 5 ads")
 		return
 	}
 }

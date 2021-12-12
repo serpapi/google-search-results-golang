@@ -5,8 +5,8 @@ package search
  */
 
 import (
-	"net/http"
 	"fmt"
+	"net/http"
 	"time"
 )
 
@@ -77,6 +77,16 @@ func NewWalmartSearch(parameter map[string]string, apiKey string) Search {
 // NewHomeDepotSearch creates search for ebay
 func NewHomeDepotSearch(parameter map[string]string, apiKey string) Search {
 	return NewSearch("home_depot", parameter, apiKey)
+}
+
+// NewNaverSearch creates search for Naver search engine
+func NewNaverSearch(parameter map[string]string, apiKey string) Search {
+	return NewSearch("naver", parameter, apiKey)
+}
+
+// NewAppleStoreSearch creates search for Apple store (itunes.apple.com)
+func NewAppleStoreSearch(parameter map[string]string, apiKey string) Search {
+	return NewSearch("apple_app_store", parameter, apiKey)
 }
 
 // SetApiKey globaly set api_key

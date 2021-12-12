@@ -206,6 +206,9 @@ This library follows the basic error management solution provided by Go.
  The error wraps a simple error message.
  
 ## Change log
+ * 3.2
+   - add naver search
+   - add apple store search
  * 3.1
    - Add home depot search engine
  * 3.0
