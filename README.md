@@ -6,7 +6,7 @@
 
 <div align="center">
 
-  <a href="">![test](https://github.com/serpapi/google-search-results-golang/workflows/Go/badge.svg)</a>
+  ![test](https://github.com/serpapi/google-search-results-golang/workflows/Go/badge.svg)
 
 </div>
 
