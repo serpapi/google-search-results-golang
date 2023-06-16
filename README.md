@@ -1,14 +1,6 @@
-<h1 align="center">Google Search Results in GoLang</h1>
+# Google Search Results GoLang API
 
-<div align="center">
-   <img src="https://user-images.githubusercontent.com/78694043/233923458-f682a161-fa82-4729-a97c-87917fb4f8a7.svg" width="600" alt="google-search-results-golang-logo">
-</div>
-
-<div align="center">
-
-  ![test](https://github.com/serpapi/google-search-results-golang/workflows/Go/badge.svg)
-
-</div>
+![test](https://github.com/serpapi/google-search-results-golang/workflows/Go/badge.svg)
 
 This Golang package enables to scrape and parse results from Google, Bing, Baidu, Yahoo, Yandex, Ebay, Google Schoolar and more using [SerpApi](https://serpapi.com).
  
