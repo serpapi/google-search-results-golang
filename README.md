@@ -29,7 +29,7 @@ You take a look to our test.
 
 Go 1.10+ must be already installed.
 ```bash
-go get -u github.com/serpapi/google_search_results_golang
+go get -u github.com/serpapi/google-search-results-golang
 ```
 
 ## Quick start
