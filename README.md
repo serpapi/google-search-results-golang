@@ -118,11 +118,11 @@ data, err := search.GetHTML()
 data, err := search.GetJSON()
 ```
 
-(the full documentation)[https://serpapi.com/search-api]
+[The full documentation](https://serpapi.com/search-api)
 
-Full example: [https://github.com/serpapi/google-search-results-golang/blob/master/demo/demo.go]
+[Full example](https://github.com/serpapi/google-search-results-golang/blob/master/demo/demo.go])
 
-see below for more hands on examples.
+See below for more hands on examples.
 
 ### Location API
 
