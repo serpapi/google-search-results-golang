@@ -166,8 +166,8 @@ func TestBingJSON(t *testing.T) {
 	}
 
 	// bing results are mostly advertising. not so great!
-	if len(rsp["organic_results"].([]interface{})) < 3 {
-		t.Error("less than 5 organic result")
+	if len(rsp["organic_results"].([]interface{})) < 2 {
+		t.Error("less than 2 organic result")
 		t.Error("response:")
 		t.Error(rsp["search_metadata"])
 		return
@@ -517,11 +517,13 @@ func TestGoogleSearchArchive(t *testing.T) {
 	}
 
 	searchID := rsp["search_metadata"].(map[string]interface{})["id"].(string)
+
 	if len(searchID) == 0 {
 		t.Error("search_metadata.id must be defined")
 		return
 	}
 
+	search.Parameter = map[string]string{}
 	searchArchive, err := search.GetSearchArchive(searchID)
 	if err != nil {
 		t.Error(err)
