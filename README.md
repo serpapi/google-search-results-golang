@@ -1,5 +1,11 @@
 # Google Search Results GoLang API
 
+> [!WARNING]
+> This package is **deprecated** in favor of [serpapi-golang](https://github.com/serpapi/serpapi-golang).
+> Please migrate to the newer implementation.
+
+----
+
 ![test](https://github.com/serpapi/google-search-results-golang/workflows/Go/badge.svg)
 
 This Golang package enables to scrape and parse results from Google, Bing, Baidu, Yahoo, Yandex, Ebay, Google Schoolar and more using [SerpApi](https://serpapi.com).
